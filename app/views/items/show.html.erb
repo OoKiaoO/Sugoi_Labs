@@ -1,0 +1,10 @@
+<h1>Item details</h1>
+
+<h3><%= @item.name %></h3>
+<p><%= @item.brand %></p>
+<p><%= @item.barcode %></p>
+
+<%= link_to "Delete #{@item.name} from Inventory?",
+            items_path(@item),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>

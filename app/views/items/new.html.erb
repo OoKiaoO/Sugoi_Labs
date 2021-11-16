@@ -1,0 +1,11 @@
+<h1>Add a new Item to the Inventory!</h1>
+<p>Please provide the informaiton requested below:</p>
+<%= form_for(@item) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :brand %>
+  <%= f.text_field :brand %>
+  <%= f.label :barcode %>
+  <%= f.text_field :barcode %>
+  <%= f.submit %>
+<% end %>
