@@ -1,10 +1,16 @@
 <h1>Item details</h1>
 
-<h3><%= @item.name %></h3>
-<p><%= @item.brand %></p>
-<p><%= @item.barcode %></p>
+<h3>Item name: <%= @item.name %></h3>
+<p>Brand: <%= @item.brand %></p>
+<p>SKU: <%= @item.barcode %></p>
 
-<%= link_to "Delete #{@item.name} from Inventory?",
-            items_path(@item),
+
+<%= link_to "Edit item info", edit_item_path %>
+
+<%= link_to "Delete item",
+            item_path(@item),
             method: :delete,
-            data: { confirm: "Are you sure?" } %>
+            data: { confirm: "Are you sure?" } 
+%>
+
+<p><%= link_to 'Home', root_path %></p>
