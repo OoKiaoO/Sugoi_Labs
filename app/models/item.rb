@@ -3,5 +3,5 @@ class Item < ApplicationRecord
 
   validates :name, presence: true
   validates :brand, presence: true
-  validates :barcode, presence: true
+  validates :barcode, presence: true, numericality: true, length: { is: 13 }
 end
