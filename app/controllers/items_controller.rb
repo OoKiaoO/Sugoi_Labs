@@ -37,6 +37,9 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
+  def show_item_amount
+  end
+
   private
 
   def item_params

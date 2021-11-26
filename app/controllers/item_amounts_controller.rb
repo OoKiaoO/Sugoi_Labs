@@ -1,0 +1,2 @@
+class ItemAmountsController < ApplicationController
+end

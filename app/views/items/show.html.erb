@@ -3,14 +3,16 @@
 <h3>Item name: <%= @item.name %></h3>
 <p>Brand: <%= @item.brand %></p>
 <p>SKU: <%= @item.barcode %></p>
+<p>Quantity: </p>
 
 
-<%= link_to "Edit item info", edit_item_path %>
-
-<%= link_to "Delete item",
+<h3>Actions:</h3>
+<p>Add quantity</p>
+<p><%= link_to "Edit item info", edit_item_path %></p>
+<p><%= link_to "Delete item",
             item_path(@item),
             method: :delete,
             data: { confirm: "Are you sure?" } 
-%>
+%></p>
 
 <p><%= link_to 'Home', root_path %></p>
