@@ -3,7 +3,23 @@
 <h3>Item name: <%= @item.name %></h3>
 <p>Brand: <%= @item.brand %></p>
 <p>SKU: <%= @item.barcode %></p>
-<p>Quantity: </p>
+<p>In Stock: </p>
+
+<h3>Amounts</h3>
+<% if @item.item_amounts.nil? %>
+  <p>You have 0 items in stock!</p>
+<% else %>
+  <ol>
+    <% @item.item_amounts.each do |item_amount| %>
+      <li>
+        <p>Quantity: <%= item_amount.amount %></p>
+        <p>Expiry date: <%= item_amount.exp_date %></p>
+        <p>Purchased by:</p>
+      </li>
+    <% end %></li>
+  </ol>
+<% end %>
+
 
 
 <h3>Actions:</h3>
