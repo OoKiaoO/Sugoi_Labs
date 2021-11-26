@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :show_item_amount, only: [:show]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :show_item_amount]
+  # before_action :show_item_amount, only: [:show]
   
   def home
   end
@@ -49,10 +49,9 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def show_item_amount # check how to bloody use custom methods in cotrollers!
-    item = params[:item_id]
+  def show_item_amount
     all_amounts = []
-    item.item_amounts.each { |item_amount| all_amounts << item_amount.amount }
+    @item.item_amounts.each { |item_amount| all_amounts << item_amount.amount }
     all_amounts.sum
   end
 end

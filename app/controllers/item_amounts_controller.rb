@@ -15,10 +15,6 @@ class ItemAmountsController < ApplicationController
     redirect_to item_path(@item_amount.item)
   end
 
-  # def all_amounts
-  #   @total_amounts = 
-  # end
-
   private
 
   def item_amount_params
