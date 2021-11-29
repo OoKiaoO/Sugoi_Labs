@@ -3,11 +3,11 @@
 <h3>Item name: <%= @item.name %></h3>
 <p>Brand: <%= @item.brand %></p>
 <p>SKU: <%= @item.barcode %></p>
-<p>In Stock: <%= @all_amounts %> </p>
+<p>In Stock: <%= @all_amounts %></p>
 
 <h3>Amounts</h3>
 <% if @item.item_amounts.empty? %>
-  <p>You have 0 items in stock!</p>
+  <p>You have 0 items in stock</p>
 <% else %>
   <ol>
     <% @item.item_amounts.each do |item_amount| %>
@@ -15,13 +15,16 @@
         <p>Quantity: <%= item_amount.amount %></p>
         <p>Expiry date: <%= item_amount.exp_date %></p>
         <p>Purchased by:</p>
-        <p>Date: </p>
+        <p>Date: <%= item_amount.created_at %></p>
+        <p><%= link_to "Delete amount", # TODO: check on how to associate action to correct controller! -> MAKE NEW ROUTES!
+            item_path(@item),
+            method: :delete,
+            data: { confirm: "Are you sure?" } 
+        %></p>
       </li>
     <% end %></li>
   </ol>
 <% end %>
-
-
 
 <h3>Actions:</h3>
 <p>Add amount</p>
