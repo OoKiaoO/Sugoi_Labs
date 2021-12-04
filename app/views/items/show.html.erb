@@ -17,7 +17,7 @@
         <p>Purchased by:</p>
         <p>Date: <%= item_amount.created_at %></p>
         <p><%= link_to "Delete amount", # TODO: check on how to associate action to correct controller! -> MAKE NEW ROUTES! (new + delete)
-            item_path(@item),
+            item_amount_path(item_amount),
             method: :delete,
             data: { confirm: "Are you sure?" } 
         %></p>
