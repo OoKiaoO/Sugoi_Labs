@@ -1,0 +1,11 @@
+<h1>Add a new Amount for <%= @item.name %>!</h1>
+<p>Please provide the informaiton requested below:</p>
+<%= form_for([@item, @item_amount]) do |f| %>
+  <%= f.label :amount %>
+  <%= f.number_field :amount %>
+  <%= f.label :exp_date %>
+  <%= f.date_field :exp_date %>
+  <%= f.submit %>
+<% end %>
+
+<p><%= link_to 'Home', root_path %></p>

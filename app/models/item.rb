@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  has_many :item_amounts
+  has_many :item_amounts, dependent: :destroy
 
   validates :name, presence: true
   validates :brand, presence: true

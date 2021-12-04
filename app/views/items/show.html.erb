@@ -16,7 +16,7 @@
         <p>Expiry date: <%= item_amount.exp_date %></p>
         <p>Purchased by:</p>
         <p>Date: <%= item_amount.created_at %></p>
-        <p><%= link_to "Delete amount", # TODO: check on how to associate action to correct controller! -> MAKE NEW ROUTES!
+        <p><%= link_to "Delete amount", # TODO: check on how to associate action to correct controller! -> MAKE NEW ROUTES! (new + delete)
             item_path(@item),
             method: :delete,
             data: { confirm: "Are you sure?" } 
@@ -27,7 +27,7 @@
 <% end %>
 
 <h3>Actions:</h3>
-<p>Add amount</p>
+<p><%= link_to "Add amount", new_item_item_amount_path(@item) %></p>
 <p><%= link_to "Edit item info", edit_item_path %></p>
 <p><%= link_to "Delete item",
             item_path(@item),
@@ -36,3 +36,6 @@
 %></p>
 
 <p><%= link_to 'Home', root_path %></p>
+
+<%# # TODO: implement sub-inventories depending on item's needs (i.e. orders & LBs)
+# TO DO: have the total amount of of an item display with graphic represaentation (to be able to check amounts in-stock for orders, in-stock for LB, amount ordered, amount ordered & in-transit, etc..) %>
