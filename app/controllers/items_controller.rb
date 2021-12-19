@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy, :show_item_amount]
-  # before_action :show_item_amount, only: [:show]
+  # skip_before_action :authenticate_user!, only: (:home) -> Uncomment for landing page/page that doesn't require login
   
   def home
   end
