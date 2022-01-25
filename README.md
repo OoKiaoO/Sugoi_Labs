@@ -1,7 +1,7 @@
 # - CQ LAB -
 Organize and manage efficiently your inventory items.
 
-### Prerequisites
+## Prerequisites
 
 - [Ruby 3.0.2](https://www.ruby-lang.org/en/downloads/)
 - gem rails (v 6.1.4.1)
@@ -29,7 +29,7 @@ Start in the project folder
 Start in the project folder
 
 - make sure you are on master branch and the working directory is clean (`git st` returns empty)
-    - If it lists red files with a letter run `git stash`. If it lists red files with question marks remove the files `rm path/to/file`
+- If it lists red files with a letter run `git stash`. If it lists red files with question marks remove the files `rm path/to/file`
 - `git pull origin master`
 - check the changes in files (Changed file -> run command):
     - Bundler -> `bundle install`

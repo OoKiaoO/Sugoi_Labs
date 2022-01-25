@@ -1,8 +1,29 @@
 <h1>The Inventory</h1>
-<ul>
-  <% @items.each do |item| %>
-    <li>Name: <%= link_to item.name, item_path(item) %></li>
-  <% end %>
-</ul>
+<p>Find here a list of all the items listed in the inventory.</p>
+<div>
+  <div id="header">
+    <ul id="filters">
+      <li><strong>Filters:</strong></li>
+      <li id="asc">A</li>
+      <li id="desc">Z</li>
+      <li id="exp">Exp. Date</li>
+      <li id="quantity">Quantity</li>
+    </ul>
+  </div>
+  <div id="results">
+    <ul>
+      <% @items.each do |item| %>
+        <% #TODO: refactor logic in a method to be called from application helpers functions  %>
+        <% all_amounts = [] %>
+        <% item.item_amounts.each { |item_amount| all_amounts << item_amount.amount } %>
+        <% item_amount = all_amounts.sum %>
 
-<p><%= link_to 'Home', root_path %></p>
+        <% next_exp_date = item.item_amounts.order(exp_date: :asc).first.exp_date %>
+
+        <li><p><strong>Name: <%= link_to item.name, item_path(item) %></strong></p>
+        <p>Amount: <%= item_amount %></p>
+        <p>Next Exp. Date: <%= next_exp_date %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

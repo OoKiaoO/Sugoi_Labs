@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    # raise
   end
 
   def show
@@ -45,13 +46,13 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :brand, :barcode)
   end
 
-  def set_item
-    @item = Item.find(params[:id])
-  end
-
   def show_item_amount
     all_amounts = []
     @item.item_amounts.each { |item_amount| all_amounts << item_amount.amount }
     all_amounts.sum
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
