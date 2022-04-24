@@ -39,7 +39,7 @@ items_array = [item_1, item_2, item_3]
   })
 end
 
-puts "All items amoounts generated!"
+puts "All items amounts generated!"
 puts "Seed completed - DB ready to use"
 
 
