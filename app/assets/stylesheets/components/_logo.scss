@@ -1,0 +1,16 @@
+.logo {
+  background-image: asset-url('logo.png');
+  background-size: cover;
+  height: 200px;
+  width: 500px;
+  background-repeat: no-repeat;
+  padding: 50px 10px;
+  background-position: center;
+}
+
+.logo_container {
+  display: flex;
+  justify-content: center;
+  height: 300px;
+  /* container height is deciding height for entire logo */
+}

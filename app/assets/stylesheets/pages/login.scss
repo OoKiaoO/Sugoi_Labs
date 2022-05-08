@@ -2,10 +2,47 @@
   width: 90%;
   margin: 0 auto;
   text-align: center;
-  h2 {
-    padding: 10px 0;
-  }
-  input {
-    margin: 7px 0;
-  }
+}
+
+.form-inputs {
+  text-align: left;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.form_input {
+  width: 100%;
+  border: 1px solid #5f3eac;
+  height: 30px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-size: 15px;
+  color: transparent;
+  font-family: 'Poppins', 'Helvetica', sans-serif;
+}
+
+#email_input {
+  margin-bottom: 30px;
+}
+
+.form-actions {
+  margin: 20px 0;
+}
+
+.login-signup {
+  height: 50px;
+  width: 100px;
+  border-radius: 12px;
+  border: none;
+  background-color: #5f3eac;
+  color: white;
+  font-family: 'Poppins', 'Helvetica', sans-serif;
+  font-size: 18px;
+  box-shadow: 0px 3px 10px -3px #262626;
+  transition: background 0.3s ease;
+}
+
+.login-signup:hover {
+  color: white;
+  background-color: #EA3C66;
 }

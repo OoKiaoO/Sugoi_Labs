@@ -35,6 +35,10 @@
   padding: 0;
 }
 
+// Graphic Variables
+@import "config/fonts";
+@import "config/colors";
+
 // SCSS Partials
 @import "components/index";
 @import "pages/index";
