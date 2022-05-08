@@ -1,5 +1,7 @@
 <div class="container">
-  <h2>Sign up</h2>
+  <div class="logo_container">
+    <div class="logo"></div>
+  </div>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
@@ -7,19 +9,24 @@
     <div class="form-inputs">
       <%= f.input :email,
                   required: true,
+                  label: false,
                   autofocus: true,
-                  input_html: { autocomplete: "email" }%>
+                  placeholder: "Your email address here",
+                  input_html: { class: "form_input", id: "email_input" }%>
       <%= f.input :password,
                   required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
+                  label: false,
+                  placeholder: "Your password here: 6 characters minimum",
+                  input_html: { class: "form_input", id: "email_input" } %>
       <%= f.input :password_confirmation,
+                  label: false,
                   required: true,
-                  input_html: { autocomplete: "new-password" } %>
+                  placeholder: "Confirm your password here",
+                  input_html: { class: "form_input" } %>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
+      <%= f.button :submit, "Sign up", class: "login-signup" %>
     </div>
   <% end %>
 

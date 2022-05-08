@@ -18,11 +18,15 @@ a:visited {
 }
 
 a:hover {
-  color: $pink;
+  color: $main-purple;
   text-decoration: underline;
 }
 
 a:active {
   color: $pink;
   text-decoration: underline;
+}
+
+p, span, h1, h2, h3, h4 {
+  color: $off-black;
 }
