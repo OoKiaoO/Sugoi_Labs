@@ -35,6 +35,10 @@
   padding: 0;
 }
 
+*:focus {
+  outline: none;
+}
+
 // Graphic Variables
 @import "config/fonts";
 @import "config/colors";

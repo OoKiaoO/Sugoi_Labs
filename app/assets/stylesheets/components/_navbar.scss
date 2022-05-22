@@ -1,6 +1,8 @@
 .navbar {
-  background: greenyellow;
-  padding: 20px 40px;
+  background: white;
+  padding: 10px 20px;
+  display: flex;
+  box-shadow: 0px 3px 10px -10px #262626;
 }
 
 .nav_links {
@@ -8,6 +10,7 @@
   justify-content: right;
   flex-direction: row;
   flex-grow: 1;
+  align-items: center;
 
   li {
     padding: 0 20px;
@@ -16,4 +19,13 @@
       text-decoration: none;
     }
   }
+}
+
+.nav_logo {
+  background-image: url("logo-nav.png");
+  background-position: center;
+  height: 60px;
+  width: 220px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
