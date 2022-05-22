@@ -13,10 +13,15 @@ $medium: 500;
 
 h1, h2, h3 {
   font-weight: $medium;
+  color: #2F2C2C;
 }
 
 h4, h5, h6, button {
   font-weight: $regular;
+}
+
+li {
+  font-weight: $light;
 }
 
 p, span, div, a {
