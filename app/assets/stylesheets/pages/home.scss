@@ -22,3 +22,54 @@
   width: 100%;
   padding: 30px 35px;
 }
+
+.top-banner {
+  display: flex;
+  background-color: white;
+  border-radius: 10px;
+  align-items: center;
+  text-align: center;
+  padding: 10px 0;
+  margin: 20px 0;
+}
+
+.sub-banner {
+  width: 100%;
+  padding: 10px;
+
+  p {
+    font-size: 25px;
+    font-weight: 300;
+  }
+
+  h1 {
+    margin: 1%;
+  }
+
+  a {
+    display: block;
+    margin: 10px;
+  }
+
+  a:link {
+    text-decoration: underline;
+  }
+}
+
+.left {
+  border-right: 1px solid #CCBEC2;
+
+  h1 {
+    margin: 3% 0 4% 0;
+  }
+}
+
+.dynamic {
+  color: black;
+}
+
+.months {
+  margin: 20px 0;
+  display: flex;
+  
+}

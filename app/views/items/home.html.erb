@@ -9,23 +9,48 @@
   </ul>
   <div class="main">
     <h1>Welcome to Sugoi Labs!</h1>
-    <div class="banner">
-      <div class="right"></div>
-      <div class="left"></div>
+    <div class="top-banner">
+      <div class="sub-banner left">
+        <p>Today is:</p>
+        <h1 class="dynamic"><%= Time.now.strftime("%d %B %Y") %></h1>
+        <a href="#">Calendar</a>
+      </div>
+      <div class="sub-banner">
+        <p>There are:</p>
+        <h1 class="dynamic">17 products</h1>
+        <p>expiring in the next two weeks.</p>
+        <a href="#">Manage</a>
+      </div>
     </div>
     <h2>Upcoming:</h2>
     <div class="months">
-      <div></div>
-      <div></div>
-      <div></div>
+      <div class="month-card">
+        <p class="card-title"><%= Time.now.strftime("%B %Y") %></p>
+        <div class="card-info">
+          <p>17 products</p>
+          <p>for a total</p>
+          <p class="card-items">32 items</p>
+          <a href="#">See items</a>
+        </div>
+      </div>
+      <div class="month-card">
+        <p class="card-title"><%= Time.now.strftime("%B %Y") %></p>
+        <div class="card-info">
+          <p>17 products</p>
+          <p>for a total</p>
+          <p class="card-items">32 items</p>
+          <a href="#">See items</a>
+        </div>
+      </div>
+      <div class="month-card">
+        <p class="card-title"><%= Time.now.strftime("%B %Y") %></p>
+        <div class="card-info">
+          <p>17 products</p>
+          <p>for a total</p>
+          <p class="card-items">32 items</p>
+          <a href="#">See items</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-
-<%# <p>Choose an option to start:</p>
-    <ul>
-      <li><%= link_to 'Create New Item', new_item_path %>
-      <%# <li>Check Items Expiring Soon</li> %>
-      <%# <li><%= link_to 'Inventory', items_path %>
-    <%# </ul> %> 
