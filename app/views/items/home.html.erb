@@ -28,25 +28,25 @@
         <p class="card-title"><%= Time.now.strftime("%B %Y") %></p>
         <div class="card-info">
           <p>17 products</p>
-          <p>for a total</p>
+          <p>for a total of:</p>
           <p class="card-items">32 items</p>
           <a href="#">See items</a>
         </div>
       </div>
       <div class="month-card">
-        <p class="card-title"><%= Time.now.strftime("%B %Y") %></p>
+        <p class="card-title"><%= Time.now.next_month(1).strftime("%B %Y") %></p>
         <div class="card-info">
           <p>17 products</p>
-          <p>for a total</p>
+          <p>for a total of:</p>
           <p class="card-items">32 items</p>
           <a href="#">See items</a>
         </div>
       </div>
       <div class="month-card">
-        <p class="card-title"><%= Time.now.strftime("%B %Y") %></p>
+        <p class="card-title"><%= Time.now.next_month(2).strftime("%B %Y") %></p>
         <div class="card-info">
           <p>17 products</p>
-          <p>for a total</p>
+          <p>for a total of:</p>
           <p class="card-items">32 items</p>
           <a href="#">See items</a>
         </div>
