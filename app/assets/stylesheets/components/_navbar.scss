@@ -17,8 +17,13 @@
   li {
     padding: 0 20px;
     list-style-type: none;
-    a {
+
+    a:link {
+      color: black;
       text-decoration: none;
+    }
+    a:visited {
+      color: black;
     }
   }
 }
