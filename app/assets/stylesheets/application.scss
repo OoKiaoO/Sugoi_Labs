@@ -39,6 +39,13 @@
   outline: none;
 }
 
+.application {
+  display: flex;
+  width: 83%;
+  float: right;
+  padding-top: 80px;
+}
+
 // Graphic Variables
 @import "config/fonts";
 @import "config/colors";

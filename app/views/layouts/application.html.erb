@@ -14,11 +14,14 @@
   <body>
     <% if user_signed_in? %>
       <%= render 'components/navbar' %>
+      <%= render 'components/side_menu' %>
     <% end %>
     
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="application">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
 
-    <%= yield %>
+      <%= yield %>
+    </div>
   </body>
 </html>

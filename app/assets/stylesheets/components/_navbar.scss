@@ -1,10 +1,10 @@
 .navbar {
   background: white;
-  padding: 10px 20px;
+  padding: 10px 10px;
   display: flex;
   box-shadow: 0px 3px 10px -10px #262626;
-  position: relative;
-  // using position value to have navbar sit on top of following content
+  position: fixed;
+  width: 100%;
 }
 
 .nav_links {
@@ -13,6 +13,7 @@
   flex-direction: row;
   flex-grow: 1;
   align-items: center;
+  padding-right: 10px;
 
   li {
     padding: 0 20px;
@@ -35,4 +36,5 @@
   width: 220px;
   background-repeat: no-repeat;
   background-size: cover;
+  margin-left: 10px;
 }

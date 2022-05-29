@@ -1,25 +1,9 @@
 .home {
-  display: flex;
-  width: 100%;
-}
-
-.sidebar {
-  width: 20%;
-  text-align: center;
-  color: #5f3cea;
-  padding-top: 5px;
-  
-  li {
-    padding: 20px 20px;
-    border-bottom: 1px solid #E5E5E5;
-    font-weight: 400;
-    font-size: 18px;
-  }
+   width: 100%;
 }
 
 .main {
   background-color: #F9FAFB;
-  width: 100%;
   padding: 30px 35px;
 }
 
