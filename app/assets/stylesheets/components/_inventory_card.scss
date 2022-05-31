@@ -7,6 +7,12 @@
   margin: 15px 0;
 }
 
+.link-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+}
+
 .item-img {
   background-image: url("placeholder.png");
   width: 25%;
@@ -46,6 +52,9 @@
 
 .inventory-card-link {
   text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
 }
 
 .inventory-card-link:hover {
