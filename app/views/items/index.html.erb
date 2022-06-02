@@ -2,12 +2,12 @@
   <div class="inventory">
     <div class="inv-dashboard">
       <div class="search-bar" id="inv-search">
-          <%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'search-form' } do |f| %>
-            <%= f.input :name,
-                        input_html: {value: "", class: "search-input"},
-                        label: false,
+          <%= form_tag items_path, method: :get, class: "search-form" do %>
+            <%= text_field_tag :query,
+                        params[:query],
+                        class: "search-input",
                         placeholder: "Search the inventory" %>   
-            <%= f.submit "", class: "search-submit" %>
+            <%= submit_tag "", class: "search-submit" %>
           <% end %>
         </div>
         <ul class="filters">

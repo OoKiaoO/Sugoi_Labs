@@ -6,7 +6,11 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all.order(name: :asc)
+    if params[:query].present?
+      @items = Item.search_by_all_item_info(params[:query])
+    else
+      @items = Item.all.order(name: :asc)
+    end
   end
 
   def show
