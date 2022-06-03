@@ -2,4 +2,47 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.inventory-bg {
+  padding: 25px;
+  width: 100%;
+}
 
+.inventory {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.inv-dashboard {
+  display: flex;
+  justify-content: space-between;
+}
+
+#inv-search {
+  width: 40%;
+}
+
+.filters {
+  display: flex;
+  width: 60%;
+  justify-content: space-around;
+  align-items: center;
+
+
+  li {
+    list-style-type: none;
+    color: #5f3cea;
+  }
+
+  #filter-by {
+    color: black;
+    font-weight: 300;
+    font-size: 20px;
+  }
+}
+
+.inv-cards {
+  margin: 30px 0;
+}
+
+/////////////

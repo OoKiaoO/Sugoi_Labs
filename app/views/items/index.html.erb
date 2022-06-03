@@ -1,6 +1,24 @@
-<h1>The Inventory</h1>
-<ul>
-  <% @items.each do |item| %>
-    <li>Name: <%= link_to item.name, item_path(item) %></li>
-  <% end %>
-</ul>
+<div class="inventory-bg"> 
+  <div class="inventory">
+    <div class="inv-dashboard">
+      <div class="search-bar" id="inv-search">
+          <%= form_tag items_path, method: :get, class: "search-form" do %>
+            <%= text_field_tag :query,
+                        params[:query],
+                        class: "search-input",
+                        placeholder: "Search the inventory" %>   
+            <%= submit_tag "", class: "search-submit" %>
+          <% end %>
+        </div>
+        <ul class="filters">
+          <li id="filter-by">Filter by:</li>
+          <li>Exp. Date</li>
+          <li>A-Z</li>
+          <li>Last Updated</li>
+        </ul>
+    </div>
+    <div class="inv-cards">
+      <%= render 'components/inventory_card' %>
+    </div>
+  </div>
+</div>
