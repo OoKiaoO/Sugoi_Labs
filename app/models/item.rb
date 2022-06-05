@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :brand, presence: true
   validates :barcode, presence: true, numericality: true, length: { is: 13 }, uniqueness: true
-  validates :barcode, numericality: true, length: { is: 13 }, uniqueness: true
+  validates :secondary_barcode, numericality: true, length: { is: 13 }, uniqueness: true, allow_nil: true
   validates :category, presence: true, :inclusion => { :in => CATEGORIES }
 
   include PgSearch::Model
