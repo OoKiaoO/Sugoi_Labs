@@ -16,26 +16,29 @@ puts "Ready for new seeds🌱"
 
 puts "Creating Items. ."
 
-item_1 = Item.create({ name: "KitKat - Peach Parfait Flavour", brand: "Nestle", barcode: Faker::Barcode.ean(13)})
-puts "Generated item 1: #{item_1.name} with barcode #{item_1.barcode}!"
+items_array = []
 
-item_2 = Item.create({ name: "KitKat - Mango Flavour", brand: "Nestle", barcode: Faker::Barcode.ean(13)})
-puts "Generated item 2: #{item_2.name} with barcode #{item_2.barcode}"
-
-item_3 = Item.create({ name: "Pocky Coconut", brand: "Glico", barcode: Faker::Barcode.ean(13)})
-puts "Generated item 3: #{item_3.name} with barcode #{item_3.barcode}"
+20.times do
+  items_array << Item.create!({
+    name: Faker::Commerce.product_name,
+    brand: Faker::Commerce.brand,
+    barcode: Faker::Barcode.ean(13),
+    retail: Faker::Commerce.price,
+    category: Item::CATEGORIES.sample,
+    location: "0#{rand(65..70).chr}-0#{rand(1...9)}-0#{rand(65..70).chr}"
+  })
+end
 
 puts "All items generated!"
 
 
 puts "Generating items amounts.."
 
-items_array = [item_1, item_2, item_3]
 10.times do
   ItemAmount.create!({
     amount: rand(50),
     exp_date: Faker::Date.between(from: 30.days.from_now, to: 1.year.from_now),
-    item: items_array[rand(3)]
+    item: items_array[rand(20)]
   })
 end
 
