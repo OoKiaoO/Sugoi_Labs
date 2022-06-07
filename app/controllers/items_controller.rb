@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @all_amounts = show_item_amount
+    @total_amount = show_item_amount
   end
 
   def new
@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :brand, :barcode)
+    params.require(:item).permit(:name, :brand, :barcode, :secondary_barcode, :description, :category, :location, :retail)
   end
 
   def set_item
