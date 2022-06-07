@@ -12,9 +12,9 @@
         </div>
         <ul class="filters">
           <li id="filter-by">Filter by:</li>
-          <li>Brand</li>
-          <li>Category</li>
-          <li>Location</li>
+          <li><%= link_to "Brand", items_path(:filter => 'brand') %></li>
+          <li><%= link_to "Category", items_path(:filter => 'category') %></li>
+          <li><%= link_to "Location", items_path(:filter => 'location') %></li>
         </ul>
     </div>
     <div class="inv-cards">

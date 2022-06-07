@@ -8,6 +8,12 @@ class ItemsController < ApplicationController
   def index
     if params[:query].present?
       @items = Item.search_by_all_item_info(params[:query])
+    elsif params[:filter].present? && params[:filter] == 'brand'
+      @items = Item.all.order(brand: :asc)
+    elsif params[:filter].present? && params[:filter] == 'category'
+      @items = Item.all.order(category: :asc)
+    elsif params[:filter].present? && params[:filter] == 'location'
+      @items = Item.all.order(location: :asc)
     else
       @items = Item.all.order(name: :asc)
     end
