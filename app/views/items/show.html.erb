@@ -1,17 +1,24 @@
 <div class="item-page">
-  <div class="item-info"></div>
+  <div class="item-info">
+    <div class="item-img">
+    </div>
+
+    <div class="item-info">
+      <h1>Item name: <%= @item.name %></h1>
+      <p>Brand: <%= @item.brand %></p>
+      <p>SKU: <%= @item.barcode %></p>
+      <p>In Stock: <%= @total_amount %></p>
+    </div>
+
+    <div class="item-links">
+    </div>
+  </div>
+
+
   <div class="item-stock"></div>
   <div class="item-logs"></div>
   <div class="item-insights"></div>
 </div>
-
-
-<h1>Item details</h1>
-
-<h3>Item name: <%= @item.name %></h3>
-<p>Brand: <%= @item.brand %></p>
-<p>SKU: <%= @item.barcode %></p>
-<p>In Stock: <%= @total_amount %></p>
 
 <h3>Amounts</h3>
 <% if @item.item_amounts.empty? %>
@@ -24,7 +31,7 @@
         <p>Expiry date: <%= item_amount.exp_date %></p>
         <p>Purchased by:</p>
         <p>Date: <%= item_amount.created_at %></p>
-        <p><%= link_to "Delete amount", # TODO: check on how to associate action to correct controller! -> MAKE NEW ROUTES! (new + delete)
+        <p><%= link_to "Delete amount",
             item_amount_path(item_amount),
             method: :delete,
             data: { confirm: "Are you sure?" } 
@@ -45,4 +52,4 @@
 
 
 <%# # TODO: implement sub-inventories depending on item's needs (i.e. orders & LBs)
-# TO DO: have the total amount of of an item display with graphic represaentation (to be able to check amounts in-stock for orders, in-stock for LB, amount ordered, amount ordered & in-transit, etc..) %>
+# TO DO: have the total amount of an item display with graphic represaentation (to be able to check amounts in-stock for orders, in-stock for LB, amount ordered, amount ordered & in-transit, etc..) %>
