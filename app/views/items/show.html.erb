@@ -1,5 +1,5 @@
 <div class="item-page">
-  <div class="item-header">
+  <div class="item-header section">
     <div class="item-header-img">
       <div class="header-img"></div>
       <p>Upload Image</p>
@@ -29,7 +29,37 @@
   </div>
 
 
-  <div class="item-stock"></div>
+  <div class="item-stock section">
+    <div class="item-stock-info">
+      <h1>Stock</h1>
+      <div class="stock-info">
+        <div class="stock-info-column-headers">
+          <h3>Upcoming</h3>
+          <h3>Date</h3>
+          <h3>Remaining</h3>
+        </div>
+
+        <% if @item.item_amounts.empty? %>
+          <p>No items in stock!</p>
+        <% else %>
+          <% @item.item_amounts.each do |item_amount| %>
+            <div class="stock-info-amounts">
+              <p><%= item_amount.amount %></p>
+              <p><%= item_amount.exp_date %></p>
+              <p><%= (item_amount.exp_date - Time.now.to_date).to_i %> days</p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="item-stock-graph">
+      <p><%= link_to "Add quantity", new_item_item_amount_path(@item) %></p>
+      <div class="stock-graph">
+      </div>
+    </div>
+  </div>
+
+
   <div class="item-logs"></div>
   <div class="item-insights"></div>
 </div>

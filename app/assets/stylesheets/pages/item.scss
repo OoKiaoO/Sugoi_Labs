@@ -3,6 +3,10 @@
   padding: 25px;
 }
 
+.section {
+  margin-bottom: 20px;
+}
+
 // ITEM HEADER SECTION
 
 .item-header {
@@ -60,4 +64,40 @@
 
 #item-delete {
   color: #EA3C66;
+}
+
+// ITEM STOCK SECTION
+
+.item-stock {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 40px;
+  border-radius: 15px;
+}
+
+.item-stock-info {
+  flex-grow: 1;
+
+  h1 {
+    margin-bottom: 25px;
+  }
+}
+
+.stock-info-column-headers {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 10px;
+}
+
+.stock-info-amounts {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 10px;
+}
+
+.item-stock-graph {
+  flex-grow: 1;
 }
