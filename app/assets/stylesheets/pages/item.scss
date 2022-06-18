@@ -100,7 +100,7 @@
 }
 
 .stock-info-amounts {
-  height: 200px;
+  height: 250px;
   border-bottom: 1px solid #777373;
   overflow: scroll;
 };
@@ -116,5 +116,13 @@
 .item-stock-graph {
   // flex-grow: 1;
   width: 45%;
+
+  p {
+    padding-bottom: 20px;
+  }
+}
+
+.stock-graph {
+  margin: 0 15%;
 }
 

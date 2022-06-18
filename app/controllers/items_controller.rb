@@ -21,6 +21,16 @@ class ItemsController < ApplicationController
 
   def show
     @total_amount = show_item_amount
+    
+    sorted_amounts = @item.item_amounts.order(exp_date: :asc)
+    expiring = sorted_amounts.first.amount
+    upcoming = sorted_amounts[1].amount
+    remaining_amounts = sorted_amounts.drop(2)
+    remaining_amount = []
+    remaining_amounts.each { |amount| remaining_amount << amount.amount }
+    remaining_total = remaining_amount.sum
+    @data_values = [expiring, upcoming, remaining_total]
+    @data_keys = ['Expiring next', 'Upcoming', 'Remaining']
   end
 
   def new
@@ -64,4 +74,13 @@ class ItemsController < ApplicationController
     @item.item_amounts.each { |item_amount| all_amounts << item_amount.amount }
     all_amounts.sum
   end
+
+  # def pie_chart_amounts
+  #   sorted_amounts = @item.item_amounts.order(exp_date: :asc)
+  #   @upcoming = sorted_amounts.first.amount
+  #   remaining_amounts = sorted_amounts.drop(1)
+  #   remaining_amount = []
+  #   remaining_amounts.each { |amount| remaining_amount << amount.amount }
+  #   @remaining_total = remaining_amount.sum
+  # end
 end
