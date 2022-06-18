@@ -39,17 +39,19 @@
           <h3>Remaining</h3>
         </div>
 
-        <% if @item.item_amounts.empty? %>
-          <p>No items in stock!</p>
-        <% else %>
-          <% @item.item_amounts.each do |item_amount| %>
-            <div class="stock-info-amounts">
-              <p><%= item_amount.amount %></p>
-              <p><%= item_amount.exp_date %></p>
-              <p><%= (item_amount.exp_date - Time.now.to_date).to_i %> days</p>
-            </div>
+        <div class="stock-info-amounts">
+          <% if @item.item_amounts.empty? %>
+            <p>No items in stock!</p>
+          <% else %>
+            <% @item.item_amounts.each do |item_amount| %>
+              <div class="stock-info-amount">
+                <p><%= item_amount.amount %></p>
+                <p><%= item_amount.exp_date %></p>
+                <p><%= (item_amount.exp_date - Time.now.to_date).to_i %> days</p>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
     <div class="item-stock-graph">

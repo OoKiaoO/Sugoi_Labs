@@ -84,20 +84,37 @@
   }
 }
 
+// IMPORTANT: display: grid; works exactly like display: flex; and needs to be re-declared on each indvidual container (!!)
+
+.stock-info {
+  display: grid;
+  grid-template-rows: auto;
+  text-align: center;
+}
+
 .stock-info-column-headers {
-  display: flex;
-  justify-content: space-around;
-  border-bottom: 1px solid lightgray;
-  padding-bottom: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 1px solid #777373;
+  padding: 0 40px 10px 40px;
 }
 
 .stock-info-amounts {
-  display: flex;
-  justify-content: space-around;
+  height: 200px;
+  border-bottom: 1px solid #777373;
+  overflow: scroll;
+};
+
+.stock-info-amount {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   border-bottom: 1px solid lightgray;
-  padding-bottom: 10px;
+  padding: 10px 0;
+  margin: 0 40px;
 }
 
 .item-stock-graph {
-  flex-grow: 1;
+  // flex-grow: 1;
+  width: 45%;
 }
+
