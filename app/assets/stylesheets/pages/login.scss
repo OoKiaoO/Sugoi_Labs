@@ -1,7 +1,13 @@
 .container {
-  width: 90%;
+  position: fixed;
+  height: 100%;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
+  z-index: 200;
+  top: 0;
+  right: 0;
+  background-color: white;
 }
 
 .form-inputs {
