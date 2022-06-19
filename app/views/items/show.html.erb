@@ -34,17 +34,22 @@
       <h1>Stock</h1>
       <div class="stock-info">
         <div class="stock-info-column-headers">
-          <h3>Upcoming</h3>
           <h3>Date</h3>
+          <h3>Amount</h3>
+          <h3>Exp. Date</h3>
           <h3>Remaining</h3>
         </div>
 
         <div class="stock-info-amounts">
           <% if @item.item_amounts.empty? %>
-            <p>No items in stock!</p>
+            <div class="no-amounts">
+              <p>No items in stock!</p>
+              <p><%= link_to "Add quantity to start!", new_item_item_amount_path(@item) %></p>
+            </div>
           <% else %>
-            <% @item.item_amounts.each do |item_amount| %>
+            <%  @item.item_amounts.each do |item_amount| %>
               <div class="stock-info-amount">
+                <p><%= item_amount.created_at %></p>
                 <p><%= item_amount.amount %></p>
                 <p><%= item_amount.exp_date %></p>
                 <p><%= (item_amount.exp_date - Time.now.to_date).to_i %> days</p>
@@ -55,15 +60,21 @@
       </div>
     </div>
     <div class="item-stock-graph">
-      <p><%= link_to "Add quantity", new_item_item_amount_path(@item) %></p>
-      <div class="stock-graph">
-        <canvas id="myChart"
-                width="200px"
-                height="100px"
-                data-labels="<%= @data_keys %>"
-                data-data="<%= @data_values %>" >
-        </canvas>
-      </div>
+      <% if @item.item_amounts.empty? %>
+        <div class="no-amounts">
+          <p>Not enough data to build a chart!</p>
+        </div>
+      <% else %>
+        <p><%= link_to "Add quantity", new_item_item_amount_path(@item) %></p>
+        <div class="stock-graph">
+          <canvas id="myChart"
+                  width="200px"
+                  height="100px"
+                  data-labels="<%= @data_keys %>"
+                  data-data="<%= @data_values %>" >
+          </canvas>
+        </div>
+      <% end %>
     </div>
   </div>
 

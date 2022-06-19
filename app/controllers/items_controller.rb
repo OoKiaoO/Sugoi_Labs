@@ -21,16 +21,24 @@ class ItemsController < ApplicationController
 
   def show
     @total_amount = show_item_amount
-    
-    sorted_amounts = @item.item_amounts.order(exp_date: :asc)
-    expiring = sorted_amounts.first.amount
-    upcoming = sorted_amounts[1].amount
-    remaining_amounts = sorted_amounts.drop(2)
-    remaining_amount = []
-    remaining_amounts.each { |amount| remaining_amount << amount.amount }
-    remaining_total = remaining_amount.sum
-    @data_values = [expiring, upcoming, remaining_total]
-    @data_keys = ['Expiring next', 'Upcoming', 'Remaining']
+
+    if !@item.item_amounts.empty?
+      if @item.item_amounts.count == 1
+        @data_values = [@item.item_amounts.first.amount]
+        @data_keys = ['Expiring next']
+      else
+        sorted_exp_date = @item.item_amounts.order(exp_date: :asc)
+        expiring_next = sorted_exp_date.first.amount
+        upcoming = sorted_exp_date[1].amount
+        remaining_amounts = sorted_exp_date.drop(2)
+        remaining_amount = []
+        remaining_amounts.each { |amount| remaining_amount << amount.amount }
+        remaining_total = remaining_amount.sum
+        @data_values = [expiring_next, upcoming, remaining_total]
+        @data_keys = ['Expiring next', 'Upcoming', 'Remaining']
+      end
+    end
+
   end
 
   def new

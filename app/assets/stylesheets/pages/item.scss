@@ -68,6 +68,11 @@
 
 // ITEM STOCK SECTION
 
+.no-amounts {
+  padding: 20%;
+  text-align: center;
+}
+
 .item-stock {
   display: flex;
   justify-content: space-between;
@@ -94,7 +99,7 @@
 
 .stock-info-column-headers {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   border-bottom: 1px solid #777373;
   padding: 0 40px 10px 40px;
 }
@@ -107,15 +112,14 @@
 
 .stock-info-amount {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   border-bottom: 1px solid lightgray;
   padding: 10px 0;
   margin: 0 40px;
 }
 
 .item-stock-graph {
-  // flex-grow: 1;
-  width: 45%;
+  width: 55%;
 
   p {
     padding-bottom: 20px;
