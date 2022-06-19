@@ -20,7 +20,27 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @total_amount = show_item_amount
+    if !@item.item_amounts.empty?
+      if @item.item_amounts.count == 1
+        @item_amounts = @item.item_amounts.order(created_at: :desc)
+        @data_values = [@item.item_amounts.first.amount]
+        @data_keys = ['Expiring next']
+      else
+        chart_data = get_chart_data
+        @data_values = chart_data[:data_values]
+        @data_keys = chart_data[:data_keys]
+
+        if params[:option] == 'amount'
+          @item_amounts = @item.item_amounts.order(amount: :desc)
+        elsif params[:option] == 'exp'
+          @item_amounts = @item.item_amounts.order(exp_date: :asc)
+        elsif params[:option] == 'remaining'
+          @item_amounts = @item.item_amounts.order(exp_date: :asc)
+        else
+          @item_amounts = @item.item_amounts.order(created_at: :desc)
+        end
+      end
+    end
   end
 
   def new
@@ -63,5 +83,19 @@ class ItemsController < ApplicationController
     all_amounts = []
     @item.item_amounts.each { |item_amount| all_amounts << item_amount.amount }
     all_amounts.sum
+  end
+
+  def get_chart_data
+    sorted_exp_date = @item.item_amounts.order(exp_date: :asc)
+    expiring_next = sorted_exp_date.first.amount
+    upcoming = sorted_exp_date[1].amount
+    remaining_amounts = sorted_exp_date.drop(2)
+    remaining_amount = []
+    remaining_amounts.each { |amount| remaining_amount << amount.amount }
+    remaining_total = remaining_amount.sum
+    {
+      data_values: [expiring_next, upcoming, remaining_total],
+      data_keys: ['Expiring next', 'Upcoming', 'Remaining']
+    }
   end
 end

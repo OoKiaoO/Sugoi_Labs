@@ -1,0 +1,142 @@
+.item-page {
+  width: 100%;
+  padding: 25px;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+// ITEM HEADER SECTION
+
+.item-header {
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.item-header-img {
+  padding: 10px;
+  text-align: center;
+
+  p {
+    margin: 30px;
+    text-decoration: underline;
+    color: #5f3cea;
+  }
+}
+
+.header-img {
+  background-image: url("placeholder.png");
+  width: 300px;
+  height: 250px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.item-info {
+  flex-grow: 1;
+  padding: 0 30px;
+  
+  h1 {
+    margin: 20px 0;
+  }
+
+  p {
+    padding-bottom: 7px;
+    font-weight: 400;
+  }
+}
+
+.item-info-value {
+  font-weight: 100;
+}
+
+.item-links {
+  display: flex;
+  justify-content: space-between;
+  width: 10%;
+  padding: 5px 20px 0 0;
+}
+
+#item-delete {
+  color: #EA3C66;
+}
+
+// ITEM STOCK SECTION
+
+.no-amounts {
+  padding: 20%;
+  text-align: center;
+}
+
+.item-stock {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 40px;
+  border-radius: 15px;
+}
+
+.item-stock-info {
+  flex-grow: 1;
+
+  h1 {
+    margin-bottom: 25px;
+  }
+}
+
+// IMPORTANT: display: grid; works exactly like display: flex; and needs to be re-declared on each indvidual container (!!)
+
+.stock-info {
+  display: grid;
+  grid-template-rows: auto;
+  text-align: center;
+}
+
+.stock-info-column-headers {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border-bottom: 1px solid #777373;
+  padding: 0 40px 10px 40px;
+
+  a {
+    font-weight: 500;
+    color: #2F2C2C;
+  }
+
+  a:hover {
+    color: #5f3cea;
+    text-decoration: none;
+  }
+}
+
+.stock-info-amounts {
+  height: 250px;
+  border-bottom: 1px solid #777373;
+  overflow: scroll;
+};
+
+.stock-info-amount {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border-bottom: 1px solid lightgray;
+  padding: 10px 0;
+  margin: 0 40px;
+}
+
+.item-stock-graph {
+  width: 55%;
+
+  p {
+    padding-bottom: 20px;
+  }
+}
+
+.stock-graph {
+  margin: 0 15%;
+}
+

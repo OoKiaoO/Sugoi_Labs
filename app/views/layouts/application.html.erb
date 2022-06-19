@@ -12,10 +12,8 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <%= render 'components/navbar' %>
-      <%= render 'components/side_menu' %>
-    <% end %>
+      <%= render 'components/navbar' if user_signed_in? %>
+      <%= render 'components/side_menu' if user_signed_in? %>
     
     <div class="application">
       <p class="notice"><%= notice %></p>

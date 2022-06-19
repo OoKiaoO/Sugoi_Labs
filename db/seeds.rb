@@ -25,7 +25,7 @@ items_array = []
     barcode: Faker::Barcode.ean(13),
     retail: Faker::Commerce.price,
     category: Item::CATEGORIES.sample,
-    location: "0#{rand(65..70).chr}-0#{rand(1...9)}-0#{rand(65..70).chr}"
+    location: "#{rand(65..70).chr}-0#{rand(1...9)}-#{rand(65..70).chr}"
   })
 end
 

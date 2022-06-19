@@ -1,0 +1,15 @@
+<% if @item.item_amounts.empty? %>
+  <div class="no-amounts">
+    <p>No items in stock!</p>
+    <p><%= link_to "Add quantity to start!", new_item_item_amount_path(@item) %></p>
+  </div>
+<% else %>
+  <%  @item_amounts.each do |item_amount| %>
+    <div class="stock-info-amount">
+      <p><%= item_amount.created_at %></p>
+      <p><%= item_amount.amount %></p>
+      <p><%= item_amount.exp_date %></p>
+      <p><%= (item_amount.exp_date - Time.now.to_date).to_i %> days</p>
+    </div>
+  <% end %>
+<% end %>
