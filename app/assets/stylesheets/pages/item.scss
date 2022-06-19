@@ -102,6 +102,16 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   border-bottom: 1px solid #777373;
   padding: 0 40px 10px 40px;
+
+  a {
+    font-weight: 500;
+    color: #2F2C2C;
+  }
+
+  a:hover {
+    color: #5f3cea;
+    text-decoration: none;
+  }
 }
 
 .stock-info-amounts {

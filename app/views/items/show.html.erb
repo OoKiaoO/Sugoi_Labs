@@ -34,28 +34,14 @@
       <h1>Stock</h1>
       <div class="stock-info">
         <div class="stock-info-column-headers">
-          <h3>Date</h3>
-          <h3>Amount</h3>
-          <h3>Exp. Date</h3>
-          <h3>Remaining</h3>
+          <h3><%= link_to "Date", item_path(@item, anchor: "reload") %></h3>
+          <h3><%= link_to "Amount", item_path(@item, :option => 'amount', anchor: "reload") %></h3>
+          <h3><%= link_to "Exp. Date", item_path(@item, :option => 'exp', anchor: "reload") %></h3>
+          <h3><%= link_to "Remaining", item_path(@item, :option => 'remaining', anchor: "reload") %></h3>
         </div>
 
-        <div class="stock-info-amounts">
-          <% if @item.item_amounts.empty? %>
-            <div class="no-amounts">
-              <p>No items in stock!</p>
-              <p><%= link_to "Add quantity to start!", new_item_item_amount_path(@item) %></p>
-            </div>
-          <% else %>
-            <%  @item.item_amounts.each do |item_amount| %>
-              <div class="stock-info-amount">
-                <p><%= item_amount.created_at %></p>
-                <p><%= item_amount.amount %></p>
-                <p><%= item_amount.exp_date %></p>
-                <p><%= (item_amount.exp_date - Time.now.to_date).to_i %> days</p>
-              </div>
-            <% end %>
-          <% end %>
+        <div class="stock-info-amounts" id="reload">
+          <%= render 'items/item_amounts_show' %>
         </div>
       </div>
     </div>
@@ -82,37 +68,3 @@
   <div class="item-logs"></div>
   <div class="item-insights"></div>
 </div>
-
-<%# <h3>Amounts</h3>
-<% if @item.item_amounts.empty? %>
-  <%# <p>You have 0 items in stock</p> %>
-<%# <% else %>
-  <%# <ol>
-    <% @item.item_amounts.each do |item_amount| %>
-      <%# <li> %>
-        <%# <p>Quantity: <%= item_amount.amount %>
-        <%# <p>Expiry date: <%= item_amount.exp_date</p> %> 
-        <%# <p>Purchased by:</p> %>
-        <%# <p>Date: <%= item_amount.created_at %>
-        <%# <p><%= link_to "Delete amount",
-            item_amount_path(item_amount),
-            method: :delete,
-            data: { confirm: "Are you sure?" } 
-        
-      </li>
-    <% end %>
-  <%# </ol> %>
-<%# <% end %>
-
-<%# <h3>Actions:</h3> %>
-<%# <p><%= link_to "Add amount", new_item_item_amount_path(@item)</p> %>
-<%# <p><%= link_to "Edit item info", edit_item_path</p> %>
-<%# <p><%= link_to "Delete item", %>
-            <%# item_path(@item), %>
-            <%# method: :delete, %>
-            <%# data: { confirm: "Are you sure?" }  %>
-<%#</p> %>
-
-
-<%# # TODO: implement sub-inventories depending on item's needs (i.e. orders & LBs)
-# TO DO: have the total amount of an item display with graphic represaentation (to be able to check amounts in-stock for orders, in-stock for LB, amount ordered, amount ordered & in-transit, etc..) %>
