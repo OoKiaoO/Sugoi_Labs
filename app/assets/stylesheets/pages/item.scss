@@ -139,4 +139,34 @@
 .stock-graph {
   margin: 0 15%;
 }
+// ITEM LOGS SECTION
 
+.item-logs {
+  background-color: white;
+  padding: 40px;
+  border-radius: 15px;
+}
+
+.log-info {
+  display: grid;
+  grid-template-rows: auto;
+  text-align: left;
+}
+
+.log-info-column-headers {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  border-bottom: 1px solid #777373;
+  padding: 0 40px 10px 40px;
+}
+
+.item-logs-info {
+  h1 {
+    margin: 20px 0;
+  }
+
+  p {
+    padding-bottom: 7px;
+    font-weight: 400;
+  }
+}
