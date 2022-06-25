@@ -150,7 +150,7 @@
 .log-info {
   display: grid;
   grid-template-rows: auto;
-  text-align: left;
+  text-align: center;
 }
 
 .log-info-column-headers {
@@ -166,7 +166,15 @@
   }
 
   p {
-    padding-bottom: 7px;
-    font-weight: 400;
+    padding: 7px 0;
+    // font-weight: 400;
   }
+}
+
+.log-action {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  border-bottom: 1px solid lightgray;
+  padding: 10px 0;
+  margin: 0 40px;
 }
