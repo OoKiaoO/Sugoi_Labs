@@ -10,6 +10,7 @@ class ItemAmountsController < ApplicationController
     @item_amount = ItemAmount.new(item_amount_params)
     @item_amount.item = @item
     if @item_amount.save
+      log(@item.id, @item_amount.amount, @item_amount.exp_date, "Added new amount: #{@item_amount.amount}, with expiration date:  #{@item_amount.exp_date}")
       redirect_to item_path(@item)
     else
       render :new
