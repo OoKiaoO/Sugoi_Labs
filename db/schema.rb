@@ -17,12 +17,13 @@ ActiveRecord::Schema.define(version: 2022_06_21_215341) do
 
   create_table "activity_logs", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "items_id", null: false
+    t.bigint "item_id", null: false
+    t.text "action"
     t.text "item_amount"
     t.date "item_amount_exp_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["items_id"], name: "index_activity_logs_on_items_id"
+    t.index ["item_id"], name: "index_activity_logs_on_item_id"
     t.index ["user_id"], name: "index_activity_logs_on_user_id"
   end
 
@@ -61,7 +62,7 @@ ActiveRecord::Schema.define(version: 2022_06_21_215341) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "activity_logs", "items", column: "items_id"
+  add_foreign_key "activity_logs", "items"
   add_foreign_key "activity_logs", "users"
   add_foreign_key "item_amounts", "items"
 end

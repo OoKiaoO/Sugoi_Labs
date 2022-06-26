@@ -7,6 +7,8 @@
   <%= f.text_field :brand %>
   <%= f.label :barcode %>
   <%= f.text_field :barcode %>
+  <%= f.label :category %>
+  <%= f.select :category, Item::CATEGORIES %>
   <%= f.submit %>
 <% end %>
 
