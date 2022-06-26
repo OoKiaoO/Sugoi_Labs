@@ -10,6 +10,12 @@
       <p><%= item_amount.amount %></p>
       <p><%= item_amount.exp_date %></p>
       <p><%= (item_amount.exp_date - Time.now.to_date).to_i %> days</p>
+      <p><%= link_to "Delete",
+            item_amount_path(item_amount),
+            method: :delete,
+            id: "item-delete",
+            data: { confirm: "Are you sure?" }
+      %></p>
     </div>
   <% end %>
 <% end %>
