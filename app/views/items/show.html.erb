@@ -2,7 +2,7 @@
   <div class="item-header section">
     <div class="item-header-img">
       <div class="header-img"></div>
-      <p>Upload Image</p>
+      <p id="reload">Upload Image</p>
     </div>
 
     <div class="item-info">
@@ -40,7 +40,7 @@
           <h3><%= link_to "Remaining", item_path(@item, :option => 'remaining', anchor: "reload") %></h3>
         </div>
 
-        <div class="stock-info-amounts" id="reload">
+        <div class="stock-info-amounts">
           <%= render 'items/item_amounts_show' %>
         </div>
       </div>
@@ -65,6 +65,23 @@
   </div>
 
 
-  <div class="item-logs"></div>
+  <div class="item-logs section">
+    <div class="item-logs-info">
+      <h1>Logs</h1>
+      <div class="log-info">
+        <div class="log-info-column-headers">
+          <h3>Date</h3>
+          <h3>User</h3>
+          <h3>Action</h3>
+        </div>
+
+        <div class="logs">
+          <%= render 'items/item_logs_show' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <div class="item-insights"></div>
 </div>

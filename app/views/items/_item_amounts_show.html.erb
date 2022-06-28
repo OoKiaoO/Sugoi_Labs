@@ -6,10 +6,16 @@
 <% else %>
   <%  @item_amounts.each do |item_amount| %>
     <div class="stock-info-amount">
-      <p><%= item_amount.created_at %></p>
+      <p><%= item_amount.created_at.strftime("%c") %></p>
       <p><%= item_amount.amount %></p>
       <p><%= item_amount.exp_date %></p>
       <p><%= (item_amount.exp_date - Time.now.to_date).to_i %> days</p>
+      <p><%= link_to "Delete",
+            item_amount_path(item_amount),
+            method: :delete,
+            id: "item-delete",
+            data: { confirm: "Are you sure?" }
+      %></p>
     </div>
   <% end %>
 <% end %>

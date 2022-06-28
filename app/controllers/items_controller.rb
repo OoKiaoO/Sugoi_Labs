@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    if !@item.item_amounts.empty?
+    unless @item.item_amounts.empty?
       if @item.item_amounts.count == 1
         @item_amounts = @item.item_amounts.order(created_at: :desc)
         @data_values = [@item.item_amounts.first.amount]
@@ -49,7 +49,11 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.save
+    @item.save!
+
+    if @item.save
+      log(@item.id, "Created new item")
+    end
 
     redirect_to item_path(@item)
   end
@@ -59,6 +63,10 @@ class ItemsController < ApplicationController
 
   def update
     @item.update(item_params)
+
+    if @item.save
+      log(@item.id, "Updated item's info")
+    end
 
     redirect_to items_path(@item)
   end

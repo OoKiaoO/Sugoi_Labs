@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   has_many :item_amounts, dependent: :destroy
+  has_many :activity_logs
 
   CATEGORIES = ['snacks', 'candies', 'chips', 'chocolates', 'soft drinks', 'seasonings', 'sauces', 'noodles']
 

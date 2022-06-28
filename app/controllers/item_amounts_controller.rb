@@ -1,6 +1,6 @@
 class ItemAmountsController < ApplicationController
-  before_action :get_item, only: [ :new, :create ]
-  before_action :get_item_amount, only: [ :destroy ]
+  before_action :get_item, only: [ :new, :create, :update ]
+  before_action :get_item_amount, only: [ :destroy, :edit ]
 
   def new
     @item_amount = ItemAmount.new
@@ -10,14 +10,34 @@ class ItemAmountsController < ApplicationController
     @item_amount = ItemAmount.new(item_amount_params)
     @item_amount.item = @item
     if @item_amount.save
+      log(@item.id,
+          "Added new amount: #{@item_amount.amount}, with expiration date:  #{@item_amount.exp_date}",
+          @item_amount.amount,
+          @item_amount.exp_date,
+        )
+
       redirect_to item_path(@item)
     else
       render :new
     end
   end
 
+  def edit
+  end
+
+  def update
+    @item_amount.update(item_amount_params)
+
+    if @item_amount.save
+      log(@item.id, "Updated item's info")
+    end
+
+    redirect_to items_path(@item)
+  end
+
   def destroy
     @item_amount.destroy
+    log(@item_amount.item_id, "Deleted amount: #{@item_amount.amount}")
 
     redirect_to item_path(@item_amount.item)
   end

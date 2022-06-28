@@ -1,0 +1,13 @@
+<% if @item.activity_logs.empty? %>
+  <div class="no-amounts">
+    <p>No actions logged yet!</p>
+  </div>
+<% else %>
+  <% @item.activity_logs.each do |activity_log| %>
+    <div class="log-action">
+      <p><%= activity_log.created_at.strftime("%c") %></p>
+      <p><%= activity_log.user.email %></p>
+      <p><%= activity_log.action %></p>
+    </div>
+  <% end %>
+<% end %>

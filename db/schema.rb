@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_21_213915) do
+ActiveRecord::Schema.define(version: 2022_06_21_215341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activity_logs", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.text "action"
+    t.text "item_amount"
+    t.date "item_amount_exp_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_activity_logs_on_item_id"
+    t.index ["user_id"], name: "index_activity_logs_on_user_id"
+  end
 
   create_table "item_amounts", force: :cascade do |t|
     t.integer "amount"
@@ -50,5 +62,7 @@ ActiveRecord::Schema.define(version: 2022_06_21_213915) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "activity_logs", "items"
+  add_foreign_key "activity_logs", "users"
   add_foreign_key "item_amounts", "items"
 end
