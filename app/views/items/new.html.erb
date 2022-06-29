@@ -1,15 +1,55 @@
-<h1>Add a new Item to the Inventory!</h1>
-<p>Please provide the informaiton requested below:</p>
-<%= form_for(@item) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :brand %>
-  <%= f.text_field :brand %>
-  <%= f.label :barcode %>
-  <%= f.text_field :barcode %>
-  <%= f.label :category %>
-  <%= f.select :category, Item::CATEGORIES %>
-  <%= f.submit %>
-<% end %>
-
-<p><%= link_to 'Home', root_path %></p>
+<div class="new-bg">
+  <h1>Create a new item:</h1>
+  <div class="new-item-main">
+    <div class="new-item-img-upload">
+    </div>
+    <div class="new-item-form">
+      <%= simple_form_for(@item) do |f| %>
+        <%= f.text_field :name,
+                          required: true,
+                          label: false,
+                          autofocus: true,
+                          placeholder: "Name",
+                          input_html: { class: "form_input", id: "email_input" } %>
+        <%= f.text_field :brand,
+                          required: true,
+                          label: false,
+                          autofocus: true,
+                          placeholder: "Brand",
+                          input_html: { class: "form_input", id: "email_input" } %>
+        <%= f.text_field :barcode,
+                          required: true,
+                          label: false,
+                          autofocus: true,
+                          placeholder: "SKU",
+                          input_html: { class: "form_input", id: "email_input" } %>
+        <%= f.text_field :secondary_barcode,
+                          required: false,
+                          label: false,
+                          autofocus: true,
+                          placeholder: "Barcode",
+                          input_html: { class: "form_input", id: "email_input" } %>
+        <%= f.select :category,
+                      Item::CATEGORIES,
+                      required: true,
+                      label: false,
+                      autofocus: true,
+                      placeholder: "Select",
+                      input_html: { class: "form_input", id: "email_input" } %>
+        <%= f.text_field :retail,
+                          required: false,
+                          label: false,
+                          autofocus: true,
+                          placeholder: "Retail",
+                          input_html: { class: "form_input", id: "email_input" } %>
+        <%= f.text_field :location,
+                          required: false,
+                          label: false,
+                          autofocus: true,
+                          placeholder: "Location",
+                          input_html: { class: "form_input", id: "email_input" } %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>

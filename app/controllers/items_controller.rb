@@ -68,7 +68,7 @@ class ItemsController < ApplicationController
       log(@item.id, "Updated item's info")
     end
 
-    redirect_to items_path(@item)
+    redirect_to item_path(@item)
   end
 
   def destroy
