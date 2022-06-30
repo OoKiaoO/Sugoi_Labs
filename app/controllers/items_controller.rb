@@ -63,6 +63,7 @@ class ItemsController < ApplicationController
 
   def update
     @item.update(item_params)
+    @item.save!
 
     if @item.save
       log(@item.id, "Updated item's info")
