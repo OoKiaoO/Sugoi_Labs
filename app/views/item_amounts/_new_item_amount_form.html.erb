@@ -1,0 +1,13 @@
+<%= form_for([item, item_amount],
+              data: { add_item_amount_target: "form",
+                      action: "submit->add-item-amount#send" }) do |f| %>
+  <div class="amount-form-component">
+    <%= f.label :amount %>
+    <%= f.number_field :amount, required: true, placeholder: "10", :class => "new-amount-input" %>
+  </div>
+  <div class="amount-form-component">
+    <%= f.label :exp_date %>
+    <%= f.date_field :exp_date, required: true, :class => "new-amount-input" %>
+  </div>
+  <%= f.submit 'Add', :class => 'add-amount' %>
+<% end %>

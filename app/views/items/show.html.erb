@@ -31,19 +31,9 @@
   <div class="item-stock section">
     <div class="item-stock-info">
       <h1>Stock</h1>
-      <div class="stock-info">
+      <div data-controller="add-item-amount" class="stock-info">
         <div class="add-quantity-form">
-          <%= form_for([@item, @item_amount], remote: true) do |f| %>
-            <div class="amount-form-component">
-              <%= f.label :amount %>
-              <%= f.number_field :amount, required: true, placeholder: "10", :class => "new-amount-input" %>
-            </div>
-            <div class="amount-form-component">
-              <%= f.label :exp_date %>
-              <%= f.date_field :exp_date, required: true, :class => "new-amount-input" %>
-            </div>
-            <%= f.submit 'Add', :class => 'add-amount' %>
-          <% end %>
+          <%= render "item_amounts/new_item_amount_form", item: @item, item_amount: @item_amount %>
         </div>
         <div class="stock-info-column-headers">
           <h3><%= link_to "Date", item_path(@item, anchor: "reload") %></h3>
@@ -52,8 +42,17 @@
           <h3><%= link_to "Remaining", item_path(@item, :option => 'remaining', anchor: "reload") %></h3>
         </div>
 
-        <div class="stock-info-amounts">
-          <%= render 'items/item_amounts_show' %>
+        <div data-add-item-amount-target="amounts" class="stock-info-amounts">
+          <% if @item.item_amounts.empty? %>
+            <div class="no-amounts">
+              <p>No items in stock!</p>
+              <p><%= link_to "Add quantity to start!", new_item_item_amount_path(@item) %></p>
+            </div>
+          <% else %>
+            <%  @item_amounts.each do |item_amount| %>
+              <%= render 'items/item_amounts_show', item_amount: item_amount %>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
