@@ -1,3 +1,19 @@
+<div class="new-bg">
+  <h1>Create a new item:</h1>
+  <div class="new-item-main">
+    <div class="new-item-img-upload item-header-img">
+      <div class="header-img"></div>
+      <p>Upload Image</p>
+    </div>
+    <div class="new-item-form">
+      <%= render "items/item_form" %>
+    </div>
+  </div>
+</div>
+
+
+
+
 <h1>Add a new Amount for <%= @item.name %>!</h1>
 <p>Please provide the informaiton requested below:</p>
 <%= form_for([@item, @item_amount]) do |f| %>

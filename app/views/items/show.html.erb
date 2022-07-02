@@ -32,6 +32,19 @@
     <div class="item-stock-info">
       <h1>Stock</h1>
       <div class="stock-info">
+        <div class="add-quantity-form">
+          <%= form_for([@item, @item_amount], remote: true) do |f| %>
+            <div class="amount-form-component">
+              <%= f.label :amount %>
+              <%= f.number_field :amount, required: true, placeholder: "10", :class => "new-amount-input" %>
+            </div>
+            <div class="amount-form-component">
+              <%= f.label :exp_date %>
+              <%= f.date_field :exp_date, required: true, :class => "new-amount-input" %>
+            </div>
+            <%= f.submit 'Add', :class => 'add-amount' %>
+          <% end %>
+        </div>
         <div class="stock-info-column-headers">
           <h3><%= link_to "Date", item_path(@item, anchor: "reload") %></h3>
           <h3><%= link_to "Amount", item_path(@item, :option => 'amount', anchor: "reload") %></h3>
@@ -45,12 +58,12 @@
       </div>
     </div>
     <div class="item-stock-graph">
+      <h1>Overview</h1>
       <% if @item.item_amounts.empty? %>
         <div class="no-amounts">
           <p>Not enough data to build a chart!</p>
         </div>
       <% else %>
-        <p><%= link_to "Add quantity", new_item_item_amount_path(@item) %></p>
         <div class="stock-graph">
           <canvas id="myChart"
                   width="200px"

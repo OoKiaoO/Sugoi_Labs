@@ -1,10 +1,6 @@
 class ItemAmountsController < ApplicationController
-  before_action :get_item, only: [ :new, :create, :update ]
+  before_action :get_item, only: [ :create, :update ]
   before_action :get_item_amount, only: [ :destroy, :edit ]
-
-  def new
-    @item_amount = ItemAmount.new
-  end
 
   def create
     @item_amount = ItemAmount.new(item_amount_params)
@@ -16,9 +12,9 @@ class ItemAmountsController < ApplicationController
           @item_amount.exp_date,
         )
 
-      redirect_to item_path(@item)
+      redirect_to item_path(@item, anchor: "reload")
     else
-      render :new
+      render "item/#{@item.id}"
     end
   end
 
