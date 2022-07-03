@@ -7,8 +7,8 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application.tailwind", "inter-font", "data-turbo-track": "reload" %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
   </head>
 
   <body>
@@ -16,10 +16,10 @@
       <%= render 'components/side_menu' if user_signed_in? %>
     
     <div class="application">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
 
-      <%= yield %>
+        <%= yield %>
     </div>
   </body>
 </html>

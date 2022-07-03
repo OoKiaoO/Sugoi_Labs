@@ -20,6 +20,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item_amount = ItemAmount.new
+    
     unless @item.item_amounts.empty?
       if @item.item_amounts.count == 1
         @item_amounts = @item.item_amounts.order(created_at: :desc)

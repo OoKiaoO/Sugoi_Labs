@@ -3,22 +3,25 @@ class ItemAmountsController < ApplicationController
   before_action :get_item_amount, only: [ :destroy, :edit ]
 
   def new
-    @item_amount = ItemAmount.new
+    @item_amount = ItemAmount.new()
   end
 
   def create
     @item_amount = ItemAmount.new(item_amount_params)
     @item_amount.item = @item
-    if @item_amount.save
-      log(@item.id,
-          "Added new amount: #{@item_amount.amount}, with expiration date:  #{@item_amount.exp_date}",
-          @item_amount.amount,
-          @item_amount.exp_date,
-        )
 
-      redirect_to item_path(@item)
-    else
-      render :new
+    respond_to do |format|
+      if @item_amount.save
+        log(@item.id,
+            "Added new amount: #{@item_amount.amount}, with expiration date:  #{@item_amount.exp_date}",
+            @item_amount.amount,
+            @item_amount.exp_date)
+        format.html { redirect_to item_path(@item, anchor: "reload") }
+        format.json # normal Rails flow will look for a file called 'create.json'
+      else
+        format.html { render "items/#{@item.id}" }
+        format.json
+      end
     end
   end
 

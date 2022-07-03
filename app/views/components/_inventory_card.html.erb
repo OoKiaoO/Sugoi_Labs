@@ -18,7 +18,7 @@
         </div>
       <% end %>
       <div class="create-link">
-        <%= link_to "Add quantity", new_item_item_amount_path(item) %>
+        <%= link_to "Add quantity", new_item_item_amount_path(item), item: @item, item_amount: @item_amount %>
       </div>
     </div>
 <% end %>

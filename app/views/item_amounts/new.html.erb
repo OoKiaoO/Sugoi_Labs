@@ -1,11 +1,33 @@
-<h1>Add a new Amount for <%= @item.name %>!</h1>
-<p>Please provide the informaiton requested below:</p>
-<%= form_for([@item, @item_amount]) do |f| %>
-  <%= f.label :amount %>
-  <%= f.number_field :amount %>
-  <%= f.label :exp_date %>
-  <%= f.date_field :exp_date %>
-  <%= f.submit %>
-<% end %>
-
-<p><%= link_to 'Home', root_path %></p>
+<div class="new-bg">
+  <h1>Add a new quantity to <%= @item.name %>:</h1>
+  <div class="new-item-main">
+    <div class="new-item-img-upload item-header-img">
+      <div class="header-img"></div>
+    </div>
+    <div class="new-item-form">
+      <%= form_for([@item, @item_amount]) do |f| %>
+        <div class="new_item_amount_form">
+          <div class="new_item_amont_inputs">
+            <%= f.label :amount %>
+            <%= f.number_field :amount,
+                              required: true, 
+                              label: false, 
+                              autofocus: true,
+                              placeholder: "10",
+                              :class => 'new_form_input' %>
+            <%= f.label :exp_date %>
+            <%= f.date_field :exp_date,
+                            required: true, 
+                            label: false, 
+                            autofocus: true,
+                            :class => 'new_form_input' %>
+          </div>
+          <div class="new_item_amount_submit">
+            <%= f.submit 'Add', :class => 'login-signup' %>
+            <p><%= link_to 'Cancel', items_path %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
