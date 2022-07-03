@@ -3,6 +3,7 @@ class ItemAmountsController < ApplicationController
   before_action :get_item_amount, only: [ :destroy, :edit ]
 
   def new
+    @item_amount = ItemAmount.new()
   end
 
   def create
