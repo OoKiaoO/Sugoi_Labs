@@ -2,6 +2,11 @@
   width: 50%;
 }
 
+.new_item_amount_form {
+  flex-direction: column;
+  padding: 5%;
+}
+
 .new_form_input {
   width: 100%;
   border: 1px solid #5f3eac;
@@ -12,4 +17,15 @@
   color: black;
   font-family: 'Poppins', 'Helvetica', sans-serif;
   margin-bottom: 30px;
+}
+
+.new_item_amount_submit {
+  margin: 10px 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  a {
+    color: #EA3C66;
+  }
 }
