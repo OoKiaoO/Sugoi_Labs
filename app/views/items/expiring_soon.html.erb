@@ -1,0 +1,58 @@
+
+<div class="inventory-bg"> 
+  <div class="upcoming-cards">
+    <h2>Upcoming expiring products:</h2>
+    <div class="months">
+      <div class="month-card">
+        <p class="card-title"><%= Time.now.strftime("%B %Y") %></p>
+        <div class="card-info">
+          <p>17 products</p>
+          <p>for a total of:</p>
+          <p class="card-items">32 items</p>
+          <a href="#">See items</a>
+        </div>
+      </div>
+      <div class="month-card">
+        <p class="card-title"><%= Time.now.next_month(1).strftime("%B %Y") %></p>
+        <div class="card-info">
+          <p>17 products</p>
+          <p>for a total of:</p>
+          <p class="card-items">32 items</p>
+          <a href="#">See items</a>
+        </div>
+      </div>
+      <div class="month-card">
+        <p class="card-title"><%= Time.now.next_month(2).strftime("%B %Y") %></p>
+        <div class="card-info">
+          <p>17 products</p>
+          <p>for a total of:</p>
+          <p class="card-items">32 items</p>
+          <a href="#">See items</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="inventory">
+    <div class="inv-dashboard">
+      <div class="search-bar" id="inv-search">
+          <%= form_tag items_path, method: :get, class: "search-form" do %>
+            <%= text_field_tag :query,
+                        params[:query],
+                        class: "search-input",
+                        placeholder: "Search the inventory" %>   
+            <%= submit_tag "", class: "search-submit" %>
+          <% end %>
+        </div>
+        <ul class="filters">
+          <li id="filter-by">Filter by:</li>
+          <li><%= link_to "Brand", items_path(:filter => 'brand') %></li>
+          <li><%= link_to "Category", items_path(:filter => 'category') %></li>
+          <li><%= link_to "Location", items_path(:filter => 'location') %></li>
+        </ul>
+    </div>
+    <div class="inv-cards">
+      <%= render 'components/inventory_card' %>
+    </div>
+  </div>
+</div>
