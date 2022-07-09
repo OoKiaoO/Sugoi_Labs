@@ -80,17 +80,26 @@ class ItemsController < ApplicationController
   end
 
   def expiring_soon
-    if params[:query].present?
-      @items = Item.search_by_all_item_info(params[:query])
-    elsif params[:filter].present? && params[:filter] == 'brand'
-      @items = Item.all.order(brand: :asc)
-    elsif params[:filter].present? && params[:filter] == 'category'
-      @items = Item.all.order(category: :asc)
-    elsif params[:filter].present? && params[:filter] == 'location'
-      @items = Item.all.order(location: :asc)
-    else
-      @items = Item.all.order(name: :asc)
-    end
+    # if params[:query].present?
+    #   @items = Item.search_by_all_item_info(params[:query])
+    # elsif params[:filter].present? && params[:filter] == 'brand'
+    #   @items = Item.all.order(brand: :asc)
+    # elsif params[:filter].present? && params[:filter] == 'category'
+    #   @items = Item.all.order(category: :asc)
+    # elsif params[:filter].present? && params[:filter] == 'location'
+    #   @items = Item.all.order(location: :asc)
+    # else
+    #   @items = Item.all.order(name: :asc)
+    # end
+    # TODO: adjust pg-search & filters to work with results in expiring soon page
+    
+    beginning_of_month = Date.today.beginning_of_month
+    end_of_month = beginning_of_month.end_of_month
+    range = beginning_of_month..end_of_month
+    items = Item.all
+    @current_month_items = get_current_month_items(items, range)
+    # @next_month_items = 
+    # @next_next_month_items =
   end
 
   private
@@ -122,4 +131,28 @@ class ItemsController < ApplicationController
       data_keys: ['Expiring next', 'Upcoming', 'Remaining']
     }
   end
+
+  # def get_monthly_range(month)
+  #   beginning_of_month = Date.today.beginning_of_month
+  #   end_of_month = beginning_of_month.end_of_month
+  #   range = beginning_of_month..end_of_month
+  # end
+
+  def get_current_month_items(items, range)
+    items_results = []
+    total_items = 0
+
+    items.each do |item|
+      results = item.item_amounts.where(exp_date: range) # check for items with exp_date i current month
+      unless results.empty? # unless the search for exp_dates in current month returned empty, do hte following:
+        items_results << item # save the current item in results array, to be used to be displayed in expiring soon view page
+        total_items += results.sum(:amount) # get the total number of item_amounts included in teh specified range & add to total
+      end
+    end
+    results = {
+      items: items_results,
+      total_items: total_items
+    }
+  end
+
 end

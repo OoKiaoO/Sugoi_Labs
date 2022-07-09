@@ -6,9 +6,9 @@
       <div class="month-card">
         <p class="card-title"><%= Time.now.strftime("%B %Y") %></p>
         <div class="card-info">
-          <p>17 products</p>
+          <p><%= @current_month_items[:items].count %> products</p>
           <p>for a total of:</p>
-          <p class="card-items">32 items</p>
+          <p class="card-items"><%= @current_month_items[:total_items] %> items</p>
           <a href="#">See items</a>
         </div>
       </div>
@@ -52,7 +52,9 @@
         </ul>
     </div>
     <div class="inv-cards">
-      <%= render 'components/inventory_card' %>
+      <% @current_month_items[:items].each do |item| %>
+        <%= render 'components/inventory_card', item: item %>
+      <% end %>
     </div>
   </div>
 </div>

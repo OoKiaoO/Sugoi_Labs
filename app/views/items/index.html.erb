@@ -18,7 +18,9 @@
         </ul>
     </div>
     <div class="inv-cards">
-      <%= render 'components/inventory_card' %>
+      <% @items.each do |item| %>
+        <%= render 'components/inventory_card', item: item %>
+      <% end %>
     </div>
   </div>
 </div>

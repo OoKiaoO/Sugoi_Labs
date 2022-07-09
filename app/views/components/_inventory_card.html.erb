@@ -1,24 +1,22 @@
-<% @items.each do |item| %>
-    <div class="item-card">
-      <%= link_to item_path(item), class: 'inventory-card-link' do %>
-        <div class="link-wrapper">
-          <div class="item-img">
-          </div>
-          <div class="item-desc">
-            <div class="item-info">
-              <h2><%= item.name %></h2>
-              <ul>
-                <li>Brand: <%= item.brand %></li>
-                <li>Barcode: <%= item.barcode %></li>
-                <li>Location: <%= item.location %></li>
-                <li>Category: <%= item.category %></li>
-              </ul>
-            </div>
-          </div>
+<div class="item-card">
+  <%= link_to item_path(item), class: 'inventory-card-link' do %>
+    <div class="link-wrapper">
+      <div class="item-img">
+      </div>
+      <div class="item-desc">
+        <div class="item-info">
+          <h2><%= item.name %></h2>
+          <ul>
+            <li>Brand: <%= item.brand %></li>
+            <li>Barcode: <%= item.barcode %></li>
+            <li>Location: <%= item.location %></li>
+            <li>Category: <%= item.category %></li>
+          </ul>
         </div>
-      <% end %>
-      <div class="create-link">
-        <%= link_to "Add quantity", new_item_item_amount_path(item), item: @item, item_amount: @item_amount %>
       </div>
     </div>
-<% end %>
+  <% end %>
+  <div class="create-link">
+    <%= link_to "Add quantity", new_item_item_amount_path(item), item: @item, item_amount: @item_amount %>
+  </div>
+</div>
