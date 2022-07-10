@@ -3,6 +3,14 @@ class ItemsController < ApplicationController
   # skip_before_action :authenticate_user!, only: (:home) -> Uncomment for landing page/page that doesn't require login
   
   def home
+    items = Item.all
+    current_month = Date.today
+    next_month = Date.today.next_month
+    next_next_month = Date.today.next_month(2)
+    
+    @current_month_items = get_monthly_items(items, get_monthly_range(current_month))
+    @next_month_items = get_monthly_items(items, get_monthly_range(next_month))
+    @next_next_month_items = get_monthly_items(items, get_monthly_range(next_next_month))
   end
 
   def index
@@ -80,17 +88,22 @@ class ItemsController < ApplicationController
   end
 
   def expiring_soon
-    # TODO: adjust pg-search & filters to work with results in expiring soon page
+    items = Item.all
     current_month = Date.today
     next_month = Date.today.next_month
     next_next_month = Date.today.next_month(2)
-    
-    items = Item.all
+
     @current_month_items = get_monthly_items(items, get_monthly_range(current_month))
     @next_month_items = get_monthly_items(items, get_monthly_range(next_month))
     @next_next_month_items = get_monthly_items(items, get_monthly_range(next_next_month))
-  end
 
+    if params[:start_date].present? && params[:end_date].present?
+      range = (params[:start_date]..params[:end_date])
+      @filtered_items = get_monthly_items(items, range)
+    end
+    
+    # raise
+  end
 
   #######################################################################################
   private
@@ -134,7 +147,7 @@ class ItemsController < ApplicationController
     total_items = 0
 
     items.each do |item|
-      results = item.item_amounts.where(exp_date: range) # check for items with exp_date i current month
+      results = item.item_amounts.where(exp_date: range) # check for item_amounts with exp_date in current month
       unless results.empty? # unless the search for exp_dates in current month returned empty, do hte following:
         items_results << item # save the current item in results array, to be used to be displayed in expiring soon view page
         total_items += results.sum(:amount) # get the total number of item_amounts included in teh specified range & add to total

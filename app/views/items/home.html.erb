@@ -16,33 +16,20 @@
     </div>
     <h2>Upcoming:</h2>
     <div class="months">
-      <div class="month-card">
-        <p class="card-title"><%= Time.now.strftime("%B %Y") %></p>
-        <div class="card-info">
-          <p>17 products</p>
-          <p>for a total of:</p>
-          <p class="card-items">32 items</p>
-          <a href="#">See items</a>
-        </div>
-      </div>
-      <div class="month-card">
-        <p class="card-title"><%= Time.now.next_month(1).strftime("%B %Y") %></p>
-        <div class="card-info">
-          <p>17 products</p>
-          <p>for a total of:</p>
-          <p class="card-items">32 items</p>
-          <a href="#">See items</a>
-        </div>
-      </div>
-      <div class="month-card">
-        <p class="card-title"><%= Time.now.next_month(2).strftime("%B %Y") %></p>
-        <div class="card-info">
-          <p>17 products</p>
-          <p>for a total of:</p>
-          <p class="card-items">32 items</p>
-          <a href="#">See items</a>
-        </div>
-      </div>
+      <%= render 'components/monthly_card',
+        month: Date.today.strftime("%B %Y"),
+        monthly_items: @current_month_items
+      %>
+
+      <%= render 'components/monthly_card',
+        month: Date.today.next_month.strftime("%B %Y"),
+        monthly_items: @next_month_items
+      %>
+
+      <%= render 'components/monthly_card',
+        month: Date.today.next_month(2).strftime("%B %Y"),
+        monthly_items: @next_next_month_items
+      %>
     </div>
   </div>
 </div>
