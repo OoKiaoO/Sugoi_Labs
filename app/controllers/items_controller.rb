@@ -3,6 +3,14 @@ class ItemsController < ApplicationController
   # skip_before_action :authenticate_user!, only: (:home) -> Uncomment for landing page/page that doesn't require login
   
   def home
+    items = Item.all
+    current_month = Date.today
+    next_month = Date.today.next_month
+    next_next_month = Date.today.next_month(2)
+    
+    @current_month_items = get_monthly_items(items, get_monthly_range(current_month))
+    @next_month_items = get_monthly_items(items, get_monthly_range(next_month))
+    @next_next_month_items = get_monthly_items(items, get_monthly_range(next_next_month))
   end
 
   def index
@@ -79,6 +87,29 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
+  def expiring_soon
+    items = Item.all
+    current_month = Date.today
+    next_month = Date.today.next_month
+    next_next_month = Date.today.next_month(2)
+
+    @current_month_items = get_monthly_items(items, get_monthly_range(current_month))
+    @next_month_items = get_monthly_items(items, get_monthly_range(next_month))
+    @next_next_month_items = get_monthly_items(items, get_monthly_range(next_next_month))
+
+    if params[:start_date].present? && params[:end_date].present?
+      range = (params[:start_date]..params[:end_date])
+      @filtered_items = get_monthly_items(items, range)
+    elsif params[:monthly_items].present?
+      @filtered_items = {
+        items: params[:monthly_items].map { |item| Item.find(item) }
+      }
+    end
+    
+    # raise
+  end
+
+  #######################################################################################
   private
 
   def item_params
@@ -108,4 +139,28 @@ class ItemsController < ApplicationController
       data_keys: ['Expiring next', 'Upcoming', 'Remaining']
     }
   end
+
+  def get_monthly_range(month)
+    beginning_of_month = month.beginning_of_month
+    end_of_month = beginning_of_month.end_of_month
+    (beginning_of_month..end_of_month)
+  end
+
+  def get_monthly_items(items, range)
+    items_results = []
+    total_items = 0
+
+    items.each do |item|
+      results = item.item_amounts.where(exp_date: range) # check for item_amounts with exp_date in current month
+      unless results.empty? # unless the search for exp_dates in current month returned empty, do hte following:
+        items_results << item # save the current item in results array, to be used to be displayed in expiring soon view page
+        total_items += results.sum(:amount) # get the total number of item_amounts included in teh specified range & add to total
+      end
+    end
+    {
+      items: items_results,
+      total_items: total_items
+    }
+  end
+
 end

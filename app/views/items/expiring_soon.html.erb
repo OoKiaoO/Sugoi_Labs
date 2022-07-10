@@ -1,0 +1,65 @@
+
+<div class="inventory-bg"> 
+  <div class="upcoming-cards">
+    <h2>Upcoming expiring products:</h2>
+    <div class="months">
+      <%= render 'components/monthly_card',
+        month: Date.today.strftime("%B %Y"),
+        monthly_items: @current_month_items
+      %>
+
+      <%= render 'components/monthly_card',
+        month: Date.today.next_month.strftime("%B %Y"),
+        monthly_items: @next_month_items
+      %>
+
+      <%= render 'components/monthly_card',
+        month: Date.today.next_month(2).strftime("%B %Y"),
+        monthly_items: @next_next_month_items
+      %>
+    </div>
+  </div>
+
+  <div class="expiring-soon">
+    <h2>Find products by expiration dates:</h2>
+    <div class="exp-soon-dashboard">
+      <div class="dates-form">
+        <%= form_with url: '/items/expiring_soon', method: :get, class: "expiring-soon-form" do |f| %>
+          <%= f.label :start_date, "From" %>
+          <%= f.date_field :start_date, class: "expiring-soon-form-input" %>
+          <%= f.label :end_date, "To" %>
+          <%= f.date_field :end_date, class: "expiring-soon-form-input" %>
+          <%= f.submit "Search", class: 'login-signup', id: "expiring-soon-form-button" %>
+        <% end %>
+        <%# <%= form_tag items_path, method: :get, class: "search-form" do %>
+          <%# <%= text_field_tag :query, %>
+                      <%# params[:query],
+                      class: "search-input",
+                      placeholder: "Search the inventory" %>
+          <%# <%= submit_tag "", class: "search-submit" %>
+        <%#end %>
+      </div>
+      <%# <div class="expiring-filters">
+        <ul class="filters">
+          <li id="filter-by">Filter by:</li>
+          <li><%= link_to "Price", items_path(:filter => 'brand') %>
+          <%# <li><%= link_to "Category", items_path(:filter => 'category')</li> %>
+          <%# <li><%= link_to "Amount", items_path(:filter => 'amount') %>
+        <%# </ul> %>
+      <%# </div> %> 
+    </div>
+    <div class="search-results">
+      <div class="inv-cards">
+        <% if @filtered_items %>
+          <% @filtered_items[:items].each do |item| %>
+            <%= render 'components/expiring_soon_card', item: item %>
+          <% end %>
+        <% else %>
+        <div class="no-results">
+          <p>No products matching the specified dates.</p>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

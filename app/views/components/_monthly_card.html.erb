@@ -1,0 +1,15 @@
+<div class="month-card">
+  <p class="card-title"><%= month %></p>
+  <div class="card-info">
+    <p>
+      <%= monthly_items[:items].count %>
+      <%= 'product'.pluralize(monthly_items[:items].count) %>
+    </p>
+    <p>for a total of:</p>
+    <p class="card-items">
+      <%= monthly_items[:total_items] %>
+      <%= 'items'.pluralize(monthly_items[:total_items]) %>
+    </p>
+    <p><%= link_to "See products", expiring_soon_items_path(:monthly_items => monthly_items[:items]) %></p>
+  </div>
+</div>

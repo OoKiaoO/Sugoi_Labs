@@ -1,0 +1,45 @@
+.expiring-soon {
+  background-color: white;
+  border-radius: 10px;
+  padding: 4%;
+}
+
+.exp-soon-dashboard {
+  border-bottom: 1px solid lightgray;
+}
+
+.dates-form {
+  width: 70%;
+  padding: 3% 0;
+}
+
+.expiring-soon-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.expiring-soon-form-input {
+  width: 30%;
+  border: 1px solid #5f3eac;
+  height: 30px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-size: 15px;
+  color: black;
+  font-family: 'Poppins', 'Helvetica', sans-serif;
+  margin: 15px 0;
+}
+
+#expiring-soon-form-button {
+  height: 45px;
+  font-size: 17px;
+}
+
+.no-results {
+  text-align: center;
+
+  p {
+    margin-bottom: 200px;
+  }
+}
