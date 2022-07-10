@@ -6,28 +6,46 @@
       <div class="month-card">
         <p class="card-title"><%= Time.now.strftime("%B %Y") %></p>
         <div class="card-info">
-          <p><%= @current_month_items[:items].count %> products</p>
+          <p>
+            <%= @current_month_items[:items].count %>
+            <%= 'product'.pluralize(@current_month_items[:items].count) %>
+          </p>
           <p>for a total of:</p>
-          <p class="card-items"><%= @current_month_items[:total_items] %> items</p>
-          <a href="#">See items</a>
+          <p class="card-items">
+            <%= @current_month_items[:total_items] %>
+            <%= 'items'.pluralize(@current_month_items[:total_items]) %>
+          </p>
+          <a href="#">See products</a>
         </div>
       </div>
       <div class="month-card">
         <p class="card-title"><%= Time.now.next_month(1).strftime("%B %Y") %></p>
         <div class="card-info">
-          <p>17 products</p>
+          <p>
+            <%= @next_month_items[:items].count %>
+            <%= 'product'.pluralize(@next_month_items[:items].count) %>
+          </p>
           <p>for a total of:</p>
-          <p class="card-items">32 items</p>
-          <a href="#">See items</a>
+          <p class="card-items">
+            <%= @next_month_items[:total_items] %>
+            <%= 'items'.pluralize(@next_month_items[:total_items]) %>
+          </p>
+          <a href="#">See products</a>
         </div>
       </div>
       <div class="month-card">
         <p class="card-title"><%= Time.now.next_month(2).strftime("%B %Y") %></p>
         <div class="card-info">
-          <p>17 products</p>
+          <p>
+            <%= @next_next_month_items[:items].count %>
+            <%= 'product'.pluralize(@next_next_month_items[:items].count) %>
+          </p>
           <p>for a total of:</p>
-          <p class="card-items">32 items</p>
-          <a href="#">See items</a>
+          <p class="card-items">
+            <%= @next_next_month_items[:total_items] %>
+            <%= 'items'.pluralize(@next_next_month_items[:total_items]) %>
+          </p>
+          <a href="#">See products</a>
         </div>
       </div>
     </div>

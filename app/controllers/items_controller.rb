@@ -80,28 +80,19 @@ class ItemsController < ApplicationController
   end
 
   def expiring_soon
-    # if params[:query].present?
-    #   @items = Item.search_by_all_item_info(params[:query])
-    # elsif params[:filter].present? && params[:filter] == 'brand'
-    #   @items = Item.all.order(brand: :asc)
-    # elsif params[:filter].present? && params[:filter] == 'category'
-    #   @items = Item.all.order(category: :asc)
-    # elsif params[:filter].present? && params[:filter] == 'location'
-    #   @items = Item.all.order(location: :asc)
-    # else
-    #   @items = Item.all.order(name: :asc)
-    # end
     # TODO: adjust pg-search & filters to work with results in expiring soon page
+    current_month = Date.today
+    next_month = Date.today.next_month
+    next_next_month = Date.today.next_month(2)
     
-    beginning_of_month = Date.today.beginning_of_month
-    end_of_month = beginning_of_month.end_of_month
-    range = beginning_of_month..end_of_month
     items = Item.all
-    @current_month_items = get_current_month_items(items, range)
-    # @next_month_items = 
-    # @next_next_month_items =
+    @current_month_items = get_monthly_items(items, get_monthly_range(current_month))
+    @next_month_items = get_monthly_items(items, get_monthly_range(next_month))
+    @next_next_month_items = get_monthly_items(items, get_monthly_range(next_next_month))
   end
 
+
+  #######################################################################################
   private
 
   def item_params
@@ -132,13 +123,13 @@ class ItemsController < ApplicationController
     }
   end
 
-  # def get_monthly_range(month)
-  #   beginning_of_month = Date.today.beginning_of_month
-  #   end_of_month = beginning_of_month.end_of_month
-  #   range = beginning_of_month..end_of_month
-  # end
+  def get_monthly_range(month)
+    beginning_of_month = month.beginning_of_month
+    end_of_month = beginning_of_month.end_of_month
+    (beginning_of_month..end_of_month)
+  end
 
-  def get_current_month_items(items, range)
+  def get_monthly_items(items, range)
     items_results = []
     total_items = 0
 
@@ -149,7 +140,7 @@ class ItemsController < ApplicationController
         total_items += results.sum(:amount) # get the total number of item_amounts included in teh specified range & add to total
       end
     end
-    results = {
+    {
       items: items_results,
       total_items: total_items
     }
