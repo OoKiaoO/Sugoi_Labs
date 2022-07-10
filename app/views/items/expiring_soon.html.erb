@@ -3,51 +3,9 @@
   <div class="upcoming-cards">
     <h2>Upcoming expiring products:</h2>
     <div class="months">
-      <div class="month-card">
-        <p class="card-title"><%= Time.now.strftime("%B %Y") %></p>
-        <div class="card-info">
-          <p>
-            <%= @current_month_items[:items].count %>
-            <%= 'product'.pluralize(@current_month_items[:items].count) %>
-          </p>
-          <p>for a total of:</p>
-          <p class="card-items">
-            <%= @current_month_items[:total_items] %>
-            <%= 'items'.pluralize(@current_month_items[:total_items]) %>
-          </p>
-          <a href="#">See products</a>
-        </div>
-      </div>
-      <div class="month-card">
-        <p class="card-title"><%= Time.now.next_month(1).strftime("%B %Y") %></p>
-        <div class="card-info">
-          <p>
-            <%= @next_month_items[:items].count %>
-            <%= 'product'.pluralize(@next_month_items[:items].count) %>
-          </p>
-          <p>for a total of:</p>
-          <p class="card-items">
-            <%= @next_month_items[:total_items] %>
-            <%= 'items'.pluralize(@next_month_items[:total_items]) %>
-          </p>
-          <a href="#">See products</a>
-        </div>
-      </div>
-      <div class="month-card">
-        <p class="card-title"><%= Time.now.next_month(2).strftime("%B %Y") %></p>
-        <div class="card-info">
-          <p>
-            <%= @next_next_month_items[:items].count %>
-            <%= 'product'.pluralize(@next_next_month_items[:items].count) %>
-          </p>
-          <p>for a total of:</p>
-          <p class="card-items">
-            <%= @next_next_month_items[:total_items] %>
-            <%= 'items'.pluralize(@next_next_month_items[:total_items]) %>
-          </p>
-          <a href="#">See products</a>
-        </div>
-      </div>
+      <%= render 'components/monthly_card', monthly_items: @current_month_items %>
+      <%= render 'components/monthly_card', monthly_items: @next_month_items %>
+      <%= render 'components/monthly_card', monthly_items: @next_next_month_items %>
     </div>
   </div>
 
