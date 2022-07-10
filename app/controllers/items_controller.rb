@@ -100,6 +100,10 @@ class ItemsController < ApplicationController
     if params[:start_date].present? && params[:end_date].present?
       range = (params[:start_date]..params[:end_date])
       @filtered_items = get_monthly_items(items, range)
+    elsif params[:monthly_items].present?
+      @filtered_items = {
+        items: params[:monthly_items].map { |item| Item.find(item) }
+      }
     end
     
     # raise

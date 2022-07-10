@@ -10,6 +10,6 @@
       <%= monthly_items[:total_items] %>
       <%= 'items'.pluralize(monthly_items[:total_items]) %>
     </p>
-    <a href="#">See products</a>
+    <p><%= link_to "See products", expiring_soon_items_path(:monthly_items => monthly_items[:items]) %></p>
   </div>
 </div>
