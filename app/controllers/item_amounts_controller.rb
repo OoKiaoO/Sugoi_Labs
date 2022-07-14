@@ -46,9 +46,8 @@ class ItemAmountsController < ApplicationController
   end
 
   private
-
   def item_amount_params
-    params.require(:item_amount).permit(:amount, :exp_date, :item)
+    params.require(:item_amount).permit(:amount, :exp_date, :checked, :exp_amount, :item)
   end
 
   def get_item_amount
@@ -57,5 +56,9 @@ class ItemAmountsController < ApplicationController
 
   def get_item
     @item = Item.find(params[:item_id])
+  end
+
+  def check(item_amount)
+    item_amount.toggle(:checked)
   end
 end
