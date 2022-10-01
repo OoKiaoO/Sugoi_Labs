@@ -1,8 +1,13 @@
 <div class="item-page">
   <div class="item-header section">
     <div class="item-header-img">
-      <div class="header-img">
-        <%= cl_image_tag @item.photo.key, width: 300, height: 250 %>
+      <div>
+        <% if @item.photo.attached? %>
+          <%= cl_image_tag @item.photo.key, width: 300, height: 250 %>
+        <% else %>
+          <div class="header-img">
+          </div>
+        <% end %>
       </div>
       <p id="reload">Upload Image</p>
     </div>
