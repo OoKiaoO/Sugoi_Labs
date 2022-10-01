@@ -105,15 +105,21 @@ class ItemsController < ApplicationController
         items: params[:monthly_items].map { |item| Item.find(item) }
       }
     end
-    
-    # raise
   end
 
   #######################################################################################
   private
 
   def item_params
-    params.require(:item).permit(:name, :brand, :barcode, :secondary_barcode, :description, :category, :location, :retail)
+    params.require(:item).permit(:name,
+                                 :brand, 
+                                 :barcode, 
+                                 :secondary_barcode, 
+                                 :description, 
+                                 :category, 
+                                 :location, 
+                                 :retail, 
+                                 :photo)
   end
 
   def set_item
