@@ -19,10 +19,11 @@
 
 .item-img {
   background-image: url("placeholder.png");
-  width: 25%;
+  width: 200px;
+  height: 200px;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
 }
 
 .item-desc {
