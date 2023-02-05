@@ -1,6 +1,6 @@
 class ItemAmountsController < ApplicationController
-  before_action :get_item, only: [ :new, :create, :update ]
-  before_action :get_item_amount, only: [ :destroy, :edit ]
+  before_action :get_item, only: [ :new, :create, :update, :edit ]
+  before_action :get_item_amount, only: [ :update, :destroy, :edit ]
 
   def new
     @item_amount = ItemAmount.new()
@@ -26,16 +26,17 @@ class ItemAmountsController < ApplicationController
   end
 
   def edit
+    # raise
   end
 
   def update
-    @item_amount.update(item_amount_params)
+    @item_amount.update!(item_amount_params)
 
     if @item_amount.save
       log(@item.id, "Updated item's info")
     end
 
-    redirect_to items_path(@item)
+    redirect_to item_path(@item)
   end
 
   def destroy
@@ -44,6 +45,13 @@ class ItemAmountsController < ApplicationController
 
     redirect_to item_path(@item_amount.item)
   end
+
+  # def manage(item_amount)
+  #   @item_amount = item_amount
+
+  #   @item_amount.checked = true
+  #   @item_amount
+  # end
 
   private
   def item_amount_params

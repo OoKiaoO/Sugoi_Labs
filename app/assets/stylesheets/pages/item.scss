@@ -144,6 +144,8 @@
 .stock-graph {
   margin: 0 15%;
 }
+
+
 // ITEM LOGS SECTION
 
 .item-logs {
@@ -163,17 +165,16 @@
   display: grid;
   grid-template-columns: 1fr 1fr 2fr;
   border-bottom: 1px solid #777373;
-  padding: 0 40px 10px 40px;
+  padding: 40px 40px 10px 40px;
 }
 
 .item-logs-info {
   h1 {
-    margin: 35px 0;
+    margin-bottom: 35px 0;
   }
 
   p {
     padding: 7px 0;
-    // font-weight: 400;
   }
 }
 
@@ -229,4 +230,25 @@
   display: flex;
   justify-content: space-between;
   align-items:baseline;
+}
+
+// WASTE LOGS SECTION
+
+.waste-log-info-column-headers {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border-bottom: 1px solid #777373;
+  padding: 40px 40px 10px 40px;
+}
+
+#waste-log-info {
+  margin-bottom: 35px;
+}
+
+.waste-log-action {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border-bottom: 1px solid lightgray;
+  padding: 10px 0;
+  margin: 0 40px;
 }

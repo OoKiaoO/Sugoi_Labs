@@ -14,6 +14,9 @@ class ItemsController < ApplicationController
   end
 
   def index
+    #TODO: make filters apply to prev. searched query results only, if present
+    # add conditional in each filter 
+    # @items = params[:filter].present? ? Item.search_by_all_item_info(params[:query]).order(brand: :asc) : ...?
     if params[:query].present?
       @items = Item.search_by_all_item_info(params[:query])
     elsif params[:filter].present? && params[:filter] == 'brand'
@@ -158,9 +161,9 @@ class ItemsController < ApplicationController
 
     items.each do |item|
       results = item.item_amounts.where(exp_date: range) # check for item_amounts with exp_date in current month
-      unless results.empty? # unless the search for exp_dates in current month returned empty, do hte following:
-        items_results << item # save the current item in results array, to be used to be displayed in expiring soon view page
-        total_items += results.sum(:amount) # get the total number of item_amounts included in teh specified range & add to total
+      unless results.empty? # unless the search for exp_dates in current month returned empty, do the following:
+        items_results << item # save the current item in results array, used to be displayed in expiring soon view page
+        total_items += results.sum(:amount) # get the total number of item_amounts included in the specified range & add to total
       end
     end
     {

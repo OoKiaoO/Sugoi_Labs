@@ -2,7 +2,16 @@
   <h1>Add a new quantity to <%= @item.name %>:</h1>
   <div class="new-item-main">
     <div class="new-item-img-upload item-header-img">
-      <div class="header-img"></div>
+      <div class="header-img">
+        <div>
+          <% if @item.photo.attached? %>
+            <%= cl_image_tag @item.photo.key, width: 300, height: 250 %>
+          <% else %>
+            <div class="header-img">
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
     <div class="new-item-form">
       <%= form_for([@item, @item_amount]) do |f| %>
@@ -21,6 +30,8 @@
                             label: false, 
                             autofocus: true,
                             :class => 'new_amount_form_input' %>
+            <% f.check_box :checked, checked: false %>
+            <% f.number_field :amount %>
           </div>
           <div class="new_item_amount_submit">
             <%= f.submit 'Add', :class => 'login-signup' %>

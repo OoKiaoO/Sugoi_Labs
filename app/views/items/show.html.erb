@@ -57,7 +57,9 @@
             </div>
           <% else %>
             <%  @item_amounts.each do |item_amount| %>
-              <%= render 'items/item_amounts_show', item_amount: item_amount %>
+              <% unless item_amount.checked %>
+                <%= render 'items/item_amounts_show', item: @item, item_amount: item_amount %>
+              <% end %>
             <% end %>
           <% end %>
         </div>
@@ -84,18 +86,17 @@
 
   <div class="item-logs section">
     <div class="item-logs-info">
-      <h1>Waste Log</h1>
+      <h1 id="waste-log-info">Waste Log</h1>
       <div class="log-info">
-        <div class="log-info-column-headers">
+        <div class="waste-log-info-column-headers">
           <h3>Quantity</h3>
           <h3>Exp. Date</h3>
           <h3>Expired</h3>
-          <h3>User</h3>
           <h3>Date</h3>
         </div>
 
         <div class="expired">
-          
+          <%= render 'items/waste_log_amounts' %>
         </div>
       </div>
     </div>
