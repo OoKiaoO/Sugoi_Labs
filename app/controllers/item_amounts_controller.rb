@@ -26,7 +26,6 @@ class ItemAmountsController < ApplicationController
   end
 
   def edit
-    # raise
   end
 
   def update
