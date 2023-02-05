@@ -1,4 +1,4 @@
-# - CQ LAB -
+# - SUGOI LABs -
 Organize and manage efficiently your inventory items.
 
 ### Prerequisites
