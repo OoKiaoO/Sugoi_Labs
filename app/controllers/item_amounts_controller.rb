@@ -45,13 +45,6 @@ class ItemAmountsController < ApplicationController
     redirect_to item_path(@item_amount.item)
   end
 
-  # def manage(item_amount)
-  #   @item_amount = item_amount
-
-  #   @item_amount.checked = true
-  #   @item_amount
-  # end
-
   private
   def item_amount_params
     params.require(:item_amount).permit(:amount, :exp_date, :checked, :exp_amount, :item)

@@ -43,9 +43,9 @@ class ItemsController < ApplicationController
         @data_values = chart_data[:data_values]
         @data_keys = chart_data[:data_keys]
 
-        if params[:option] == 'amount'
+        if params[:option] == 'amount#reload'
           @item_amounts = @item.item_amounts.order(amount: :desc)
-        elsif params[:option] == 'exp'
+        elsif params[:option] == 'exp#reload'
           @item_amounts = @item.item_amounts.order(exp_date: :asc)
         elsif params[:option] == 'remaining'
           @item_amounts = @item.item_amounts.order(exp_date: :asc)
@@ -137,9 +137,10 @@ class ItemsController < ApplicationController
 
   def get_chart_data
     sorted_exp_date = @item.item_amounts.order(exp_date: :asc)
-    expiring_next = sorted_exp_date.first.amount
-    upcoming = sorted_exp_date[1].amount
-    remaining_amounts = sorted_exp_date.drop(2)
+    not_expired = sorted_exp_date.select {|amount| !amount.checked}
+    expiring_next = not_expired.first.amount
+    upcoming = not_expired[1].amount
+    remaining_amounts = not_expired.drop(2)
     remaining_amount = []
     remaining_amounts.each { |amount| remaining_amount << amount.amount }
     remaining_total = remaining_amount.sum
