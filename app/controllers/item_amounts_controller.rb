@@ -19,7 +19,7 @@ class ItemAmountsController < ApplicationController
         format.html { redirect_to item_path(@item, anchor: "reload") }
         format.json # normal Rails flow will look for a file called 'create.json'
       else
-        format.html { render "items/#{@item.id}" }
+        format.html { render "items/#{@item.id}", status: :unprocessable_entity }
         format.json
       end
     end

@@ -28,9 +28,12 @@ export default class extends Controller {
       headers: { "Accept": 'application/json', "X-CSRF-Token": csrfToken() },
       body: new FormData(this.formTarget)
     })
-      .then(response => response.json())
+      .then(response => {
+        console.log([response, "response"]);
+        response.json()
+      })
       .then(data => {
-
+        console.log([data, "data"]);
         this.amountsTarget.insertAdjacentHTML('afterbegin', data.inserted_item);
         this.formTarget.outerHTML = data.form;
       })
