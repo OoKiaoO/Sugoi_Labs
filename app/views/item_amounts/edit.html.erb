@@ -1,0 +1,51 @@
+<div class="new-bg">
+  <h1>Manage a quantity for <%= @item.name %>:</h1>
+  <div class="new-item-main">
+    <div class="new-item-img-upload item-header-img">
+      <div class="header-img">
+        <div>
+          <% if @item.photo.attached? %>
+            <%= cl_image_tag @item.photo.key, width: 300, height: 250 %>
+          <% else %>
+            <div class="header-img">
+            </div>
+          <% end %>
+      </div>
+      </div>
+    </div>
+    <div class="new-item-form">
+      <%= form_for([@item, @item_amount]) do |f| %>
+        <div class="new_item_amount_form">
+          <p>Amount: <%= @item_amount.amount%></p>
+          <p>Exp. Date: <%= @item_amount.exp_date%></p>
+          <div class="new_item_amont_inputs">
+            <% f.number_field :amount,
+                              required: true, 
+                              label: false, 
+                              autofocus: true,
+                              placeholder: "10",
+                              :class => 'new_amount_form_input' %>
+            <% f.date_field :exp_date,
+                            required: true, 
+                            label: false, 
+                            autofocus: true,
+                            :class => 'new_amount_form_input' %>
+            <%= f.label :exp_amount, "How many left on the shelf?" %>
+            <%= f.number_field :exp_amount,
+                              required: true, 
+                              label: false, 
+                              autofocus: true,
+                              placeholder: "0",
+                              :class => 'new_amount_form_input' %>
+          </div>
+          <%= f.check_box :checked %>
+          <%= f.label :checked, "Add the selected amount to the Waste Log entries." %>
+          <div class="new_item_amount_submit">
+            <%= f.submit 'Confirm', :class => 'login-signup' %>
+            <p><%= link_to 'Cancel', items_path %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 class ItemAmountsController < ApplicationController
-  before_action :get_item, only: [ :new, :create, :update ]
-  before_action :get_item_amount, only: [ :destroy, :edit ]
+  before_action :get_item, only: [ :new, :create, :update, :edit ]
+  before_action :get_item_amount, only: [ :update, :destroy, :edit ]
 
   def new
     @item_amount = ItemAmount.new()
@@ -19,7 +19,7 @@ class ItemAmountsController < ApplicationController
         format.html { redirect_to item_path(@item, anchor: "reload") }
         format.json # normal Rails flow will look for a file called 'create.json'
       else
-        format.html { render "items/#{@item.id}" }
+        format.html { render "items/#{@item.id}", status: :unprocessable_entity }
         format.json
       end
     end
@@ -29,13 +29,13 @@ class ItemAmountsController < ApplicationController
   end
 
   def update
-    @item_amount.update(item_amount_params)
+    @item_amount.update!(item_amount_params)
 
     if @item_amount.save
       log(@item.id, "Updated item's info")
     end
 
-    redirect_to items_path(@item)
+    redirect_to item_path(@item)
   end
 
   def destroy

@@ -56,8 +56,10 @@
               <p><%= link_to "Add quantity to start!", new_item_item_amount_path(@item) %></p>
             </div>
           <% else %>
-            <%  @item_amounts.each do |item_amount| %>
-              <%= render 'items/item_amounts_show', item_amount: item_amount %>
+            <% @item.item_amounts.each do |item_amount| %>
+              <% unless item_amount.checked %>
+                <%= render 'items/item_amounts_show', item: @item, item_amount: item_amount %>
+              <% end %>
             <% end %>
           <% end %>
         </div>
@@ -82,6 +84,31 @@
     </div>
   </div>
 
+  <div class="item-logs section">
+    <div class="item-logs-info">
+      <h1 id="waste-log-info">Waste Log</h1>
+      <div class="log-info">
+        <div class="waste-log-info-column-headers">
+          <h3>Quantity</h3>
+          <h3>Exp. Date</h3>
+          <h3>Expired</h3>
+          <h3>Logged Date</h3>
+        </div>
+        <div class="expired">
+          <% exp_amounts = @item.item_amounts.select {|amount| amount.checked} %>
+          <% if exp_amounts.empty? %>
+            <div class="no-amounts">
+              <p>Yay! No items expired yet.</p>
+            </div>
+          <% else %>
+            <% exp_amounts.each do |item_amount| %>
+              <%= render 'items/waste_log_amounts', amount: item_amount %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="item-logs section">
     <div class="item-logs-info">
