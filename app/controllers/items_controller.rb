@@ -32,6 +32,8 @@ class ItemsController < ApplicationController
 
   def show
     @item_amount = ItemAmount.new
+    @amounts = @item.item_amounts
+    @unchecked_amounts = @amounts.select {|amount| !amount.checked}
     
     unless @item.item_amounts.empty?
       if @item.item_amounts.count == 1

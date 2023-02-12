@@ -50,16 +50,14 @@
         </div>
 
         <div data-add-item-amount-target="amounts" class="stock-info-amounts">
-          <% if @item.item_amounts.empty? %>
+          <% if @unchecked_amounts.empty? %>
             <div class="no-amounts">
               <p>No items in stock!</p>
               <p><%= link_to "Add quantity to start!", new_item_item_amount_path(@item) %></p>
             </div>
           <% else %>
-            <% @item.item_amounts.each do |item_amount| %>
-              <% unless item_amount.checked %>
+            <% @unchecked_amounts.each do |item_amount| %>
                 <%= render 'items/item_amounts_show', item: @item, item_amount: item_amount %>
-              <% end %>
             <% end %>
           <% end %>
         </div>
@@ -67,7 +65,7 @@
     </div>
     <div class="item-stock-graph">
       <h1>Overview</h1>
-      <% if @item.item_amounts.empty? %>
+      <% if @unchecked_amounts.empty? %>
         <div class="no-amounts">
           <p>Not enough data to build a chart!</p>
         </div>
