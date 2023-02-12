@@ -32,8 +32,7 @@ class ItemsController < ApplicationController
 
   def show
     @item_amount = ItemAmount.new
-    @amounts = @item.item_amounts
-    @unchecked_amounts = @amounts.select {|amount| !amount.checked}
+    @unchecked_amounts = @item.item_amounts.select {|amount| !amount.checked}
     
     unless @item.item_amounts.empty?
       if @item.item_amounts.count == 1
@@ -140,12 +139,12 @@ class ItemsController < ApplicationController
   def get_chart_data
     sorted_exp_date = @item.item_amounts.order(exp_date: :asc)
     not_expired = sorted_exp_date.select {|amount| !amount.checked}
-    expiring_next = not_expired.first.amount
-    upcoming = not_expired[1].amount
-    remaining_amounts = not_expired.drop(2)
-    remaining_amount = []
-    remaining_amounts.each { |amount| remaining_amount << amount.amount }
-    remaining_total = remaining_amount.sum
+    expiring_next = not_expired.count < 1 ? 0 : not_expired.first.amount
+    upcoming = not_expired.count <= 1 ? 0 : not_expired[1].amount
+    remaining = not_expired.drop(2)
+    remaining_amounts = remaining.map { |remaining_amount| remaining_amount.amount }
+    # remaining.each { |amount| remaining_amounts << amount.amount }
+    remaining_total = remaining_amounts.sum
     {
       data_values: [expiring_next, upcoming, remaining_total],
       data_keys: ['Expiring next', 'Upcoming', 'Remaining']
