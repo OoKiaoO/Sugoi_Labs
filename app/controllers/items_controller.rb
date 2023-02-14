@@ -143,7 +143,6 @@ class ItemsController < ApplicationController
     upcoming = not_expired.count <= 1 ? 0 : not_expired[1].amount
     remaining = not_expired.drop(2)
     remaining_amounts = remaining.map { |remaining_amount| remaining_amount.amount }
-    # remaining.each { |amount| remaining_amounts << amount.amount }
     remaining_total = remaining_amounts.sum
     {
       data_values: [expiring_next, upcoming, remaining_total],
