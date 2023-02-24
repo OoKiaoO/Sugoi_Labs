@@ -1,6 +1,20 @@
-<h1>User Profile Page</h1>
-<h3>Username: <%= @user.username %></h3>
-<h3>Email: <%= @user.email %></h3>
-<h3>Password: ******</h3>
-<p><%= link_to "Change password", edit_user_registration_path %></p>
-<h3><%= link_to "Edit", edit_user_path %></h3>
+<div class="new-bg">
+  <h1>Account</h1>
+  <div class="profile-section">
+    <div class="new-item-img-upload item-header-img">
+      <div class="profile-img"></div>
+      <p>Upload Image</p>
+    </div>
+    <div class="profile-info">
+      <div class="user-profile-info">
+        <h3>Username:   <span class="item-info-value"><%= @user.username %></span></h3>
+        <h3>Email:   <span class="item-info-value"><%= @user.email %></span></h3>
+        <h3>Password:   ******</h3>
+      </div>
+      <div class="profile-links">
+        <p><%= link_to "Change password", edit_user_registration_path %></p>
+        <p><%= link_to "Edit Account", edit_user_path %></p>
+      </div>
+    </div>
+  </div>
+</div>
