@@ -12,6 +12,6 @@ Rails.application.routes.draw do
     end
   end
   resources :item_amounts, only: [ :destroy ]
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit, :update]
   root to: 'items#home'
 end
