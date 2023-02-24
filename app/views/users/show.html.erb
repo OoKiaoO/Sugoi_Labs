@@ -1,5 +1,6 @@
 <h1>User Profile Page</h1>
 <h3>Username: <%= @user.username %></h3>
 <h3>Email: <%= @user.email %></h3>
-<br/>
+<h3>Password: ******</h3>
+<p><%= link_to "Change password", edit_user_registration_path %></p>
 <h3><%= link_to "Edit", edit_user_path %></h3>
