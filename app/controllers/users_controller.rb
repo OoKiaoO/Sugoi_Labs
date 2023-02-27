@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    # use item page css & layout style to display user"s info
   end
 
   def edit

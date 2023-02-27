@@ -1,7 +1,19 @@
 <%= form_with model: @user do |f| %>
   <%= f.label :username %>
-  <%= f.text_field :username %>
+  <%= f.text_field :username,
+                    required: true,
+                    label: false,
+                    autofocus: true,
+                    placeholder: "Username - Required",
+                    :class => "new_form_input" %>
   <%= f.label :email %>
-  <%= f.text_field :email %>
-  <%= f.submit %>
+  <%= f.text_field :email,
+                    required: true,
+                    label: false,
+                    autofocus: true,
+                    placeholder: "Email - Required",
+                    :class => "new_form_input" %>
+  <div class= "form-action">                  
+    <%= f.submit "Update", :class => "login-signup" %>
+  </div>
 <% end %>

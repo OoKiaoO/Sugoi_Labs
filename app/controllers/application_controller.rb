@@ -15,9 +15,4 @@ class ApplicationController < ActionController::Base
     @username = current_user.username
     @email = current_user.email
   end
-
-  # create Users controller the usual way -> rails g ...
-  # create show method with @user = curent_user
-  # route: get 'users/:id' => 'users#show' or resources :users, only: [:show]
-  # for edit, redirect to users/registrations edit form
 end
