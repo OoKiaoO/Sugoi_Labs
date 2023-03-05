@@ -10,4 +10,9 @@ class ApplicationController < ActionController::Base
     @log.item_amount_exp_date = exp_date
     @log.save!
   end
+
+  def user
+    @username = current_user.username
+    @email = current_user.email
+  end
 end
