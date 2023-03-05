@@ -48,4 +48,31 @@
 .form-action {
   margin-top: 20px;
   text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.login-signup {
+  height: 50px;
+  width: 100px;
+  border-radius: 12px;
+  border: none;
+  background-color: #5f3eac;
+  color: white;
+  font-family: 'Poppins', 'Helvetica', sans-serif;
+  font-size: 18px;
+  box-shadow: 0px 3px 10px -3px #262626;
+  transition: background 0.3s ease;
+}
+
+.login-signup:hover {
+  color: white;
+  background-color: #EA3C66;
+}
+
+.cancel {
+  color: #EA3C66;
+  font-family: 'Poppins', 'Helvetica', sans-serif;
+  font-size: 18px;
 }
