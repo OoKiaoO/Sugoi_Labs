@@ -1,19 +1,30 @@
-<%= form_with model: @user do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username,
-                    required: true,
-                    label: false,
-                    autofocus: true,
-                    placeholder: "Username - Required",
-                    :class => "new_form_input" %>
-  <%= f.label :email %>
-  <%= f.text_field :email,
-                    required: true,
-                    label: false,
-                    autofocus: true,
-                    placeholder: "Email - Required",
-                    :class => "new_form_input" %>
-  <div class= "form-action">                  
-    <%= f.submit "Update", :class => "login-signup" %>
+<div class="new-bg">
+  <h1>Edit Account</h1>
+  <div class="profile-section">
+    <div class="new-item-img-upload item-header-img">
+      <div class="profile-img"></div>
+      <p>Upload Image</p>
+    </div>
+    <div class="new-item-form">
+      <%= form_with model: @user do |f| %>
+        <%= f.label :username %>
+        <%= f.text_field :username,
+                          required: true,
+                          label: false,
+                          autofocus: true,
+                          placeholder: "Username - Required",
+                          :class => "new_form_input" %>
+        <%= f.label :email %>
+        <%= f.text_field :email,
+                          required: true,
+                          label: false,
+                          autofocus: true,
+                          placeholder: "Email - Required",
+                          :class => "new_form_input" %>
+        <div class= "form-action">                  
+          <%= f.submit "Update", :class => "login-signup" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>
