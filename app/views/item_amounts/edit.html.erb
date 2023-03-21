@@ -14,7 +14,13 @@
       </div>
     </div>
     <div class="new-item-form">
-      <%= form_for([@item, @item_amount]) do |f| %>
+      <% if @item_amount.errors.any? %>
+        <% @item_amount.errors.full_messages.each do |message|%>\
+          <h3><%= message %> </h3>
+        <%end%>
+      <%end%>
+
+      <%= form_for([@item, @item_amount], local: true) do |f| %>
         <div class="new_item_amount_form">
           <p>Amount: <%= @item_amount.amount%></p>
           <p>Exp. Date: <%= @item_amount.exp_date%></p>

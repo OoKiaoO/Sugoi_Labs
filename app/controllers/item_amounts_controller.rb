@@ -33,6 +33,8 @@ class ItemAmountsController < ApplicationController
 
     if @item_amount.save
       log(@item.id, "Updated item's info")
+    else
+      render :new
     end
 
     redirect_to item_path(@item)
