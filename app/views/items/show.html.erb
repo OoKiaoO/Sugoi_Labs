@@ -93,17 +93,33 @@
           <h3>Logged Date</h3>
         </div>
         <div class="expired">
-          <% exp_amounts = @item.item_amounts.select {|amount| amount.checked} %>
-          <% if exp_amounts.empty? %>
+          <% if @exp_amounts == nil %>
             <div class="no-amounts">
               <p>Yay! No items expired yet.</p>
             </div>
           <% else %>
-            <% exp_amounts.each do |item_amount| %>
+            <% @exp_amounts.each do |item_amount| %>
               <%= render 'items/waste_log_amounts', amount: item_amount %>
             <% end %>
           <% end %>
         </div>
+      </div>
+
+      <div class="item-waste-chart">
+        <% if @unchecked_amounts.empty? %>
+          <div class="no-amounts">
+            <p>Not enough data to build a chart!</p>
+          </div>
+        <% else %>
+          <div class="stock-graph">
+            <canvas id="wasteChart"
+                    width="900px"
+                    height="600px"
+                    data-wasteLabels="<%= @data_waste_keys %>"
+                    data-wasteData="<%= @data_waste_values %>">
+            </canvas>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

@@ -37,3 +37,27 @@ document.addEventListener('turbo:load', () => {
     }
   }
 })
+
+document.addEventListener('turbo:load', () => {
+  const wasteChart = document.getElementById('wasteChart');
+  if (wasteChart) {
+    const ctx = wasteChart.getContext('2d');
+    if (ctx) {
+      const wasteChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: JSON.parse(ctx.canvas.dataset.wastelabels),
+          datasets: [{
+            label: "Amount Wasted",
+            data: JSON.parse(ctx.canvas.dataset.wastedata),
+            backgroundColor: [
+              'rgba(234, 60, 182, 0.2)',
+              'rgba(246, 135, 45, 0.2)',
+              'rgba(95, 60, 234, 0.2)'
+            ]
+          }]
+        },
+      });
+    }
+  }
+})
